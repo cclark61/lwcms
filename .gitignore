@@ -1,0 +1,4 @@
+config.inc.php
+bower_components
+vendor
+node_modules
