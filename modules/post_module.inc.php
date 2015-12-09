@@ -18,25 +18,15 @@
 //=========================================================================
 
 //**************************************************************
+// Version
+//**************************************************************
+$this->add_xml('version', xml_escape($_SESSION['version']));
+
+//**************************************************************
 // Theme
 //**************************************************************
 $this->add_xml("theme", $this->theme);
 $this->add_xml("theme_path", "{$this->html_path}/themes/{$this->theme}");
-
-//**************************************************************
-// JQuery UI
-//**************************************************************
-if (isset($jquery_ui) && $jquery_ui === true) {
-	$this->add_js_file('jquery-ui-1.10.0.custom.min.js');
-	$this->add_css_file(
-		array(
-			'href' => '/themes/common/jquery-ui/ui-lightness/jquery-ui-1.10.0.custom.css',
-			'type' => 'text/css',
-			'rel' => 'stylesheet',
-			'media' => 'all'
-		)
-	);
-}
 
 //**************************************************************
 // CodeMirror
@@ -143,12 +133,6 @@ if (!empty($breadcrumbs)) { $this->add_xml("breadcrumbs", xml_escape_array($brea
 // Admin Status
 //**************************************************************
 $this->add_xml("lwcms_admin_status", $admin_status);
-
-//**************************************************************
-// Change Password / Help Page Functionality
-//**************************************************************
-$this->add_xml("change_password", $change_password);
-$this->add_xml("help_page", $help_page);
 
 //**************************************************************
 // Site Title / Header / Footer

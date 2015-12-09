@@ -8,6 +8,7 @@
         "fontawesome": ">= 4.3.0",
         "AppJack": "https://github.com/cclark61/AppJack.git#0.5.2",
         "tinymce": ">= 4.2.2", 
-        "codemirror": ">=5.6.0"
+        "codemirror": ">=5.6.0",
+        "jQuery.MultiFile": "https://github.com/fyneworks/multifile.git"
     }
 }

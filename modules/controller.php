@@ -52,34 +52,11 @@ switch ($segment_1) {
 	// Change Password
 	//---------------------------------------------------
 	case 'change_pass':
-		if ($change_password) {
-			$mod_title = 'Change My Password';
-			$mod_base_url .= 'change_pass/';
-			$mod_base_url2 .= 'change_pass/';
-			$mod_icon_class = 'icon-lock';
-			include("home/change_pass/main.php");
-		}
-		else {
-			include("sites/controller.php");
-		}
-        break;
-
-	//---------------------------------------------------
-	// Help
-	//---------------------------------------------------
-	case 'help':
-		if ($help_page) {
-			$mod_title = 'Help';
-			$mod_base_url .= 'help/';
-			$mod_base_url2 .= 'help/';
-			$mod_icon_class = 'icon-question-sign';
-			if (isset($_SESSION["help_page_file"]) && file_exists($_SESSION["help_page_file"])) {
-				include($_SESSION["help_page_file"]);
-			}
-		}
-		else {
-			include("sites/controller.php");
-		}
+		$mod_title = 'Change My Password';
+		$mod_base_url .= 'change_pass/';
+		$mod_base_url2 .= 'change_pass/';
+		$mod_icon_class = 'icon-lock';
+		include("home/change_pass/main.php");
         break;
 
 	//---------------------------------------------------
@@ -185,4 +162,3 @@ switch ($segment_1) {
 //====================================================================
 //$this->set_output_xml();
 
-?>

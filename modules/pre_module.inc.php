@@ -23,24 +23,28 @@
 load_plugin("ssv");
 load_plugin("xhtml_gen");
 load_plugin("date_time");
-load_plugin('app_functions');
-load_plugin("POP_twitter_bootstrap");
 load_plugin("lwcms");
+load_plugin("POP_bootstrap3");
+load_plugin('POP_format_content');
 
 //**********************************************************
 // Add-in CSS
 //**********************************************************
-$this->add_css_file('/themes/bootstrap/css/bootstrap.min.css');
-$this->add_css_file('/themes/bootstrap/css/bootstrap-responsive.min.css');
-$this->add_css_file('/themes/default/lwcms.css');
+$this->add_css_file('/bower_components/bootstrap/dist/css/bootstrap.min.css?') . $_SESSION['version'];
+$this->add_css_file('/bower_components/fontawesome/css/font-awesome.min.css?' . $_SESSION['version']);
+$this->add_css_file('/bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css?' . $_SESSION['version']);
+$this->add_css_file('/bower_components/AppJack/appjack.css?' . $_SESSION['version']);
+$this->add_css_file('/themes/default/lwcms.css?' . $_SESSION['version']);
 
 //**********************************************************
 // Add-in Javascript
 //**********************************************************
-$this->add_js_file('jquery-1.9.1.min.js');
-$this->add_js_file('jquery.MultiFile.min.js');
-$this->add_js_file('main.js');
-$jquery_ui = false;
+$this->add_js_file('/SwellCore/javascript/stay_standalone.js?'. $_SESSION['version']);
+$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
+$this->add_js_file('/bower_components/jquery/dist/jquery.min.js?' . $_SESSION['version']);
+$this->add_js_file('/bower_components/jquery-ui/jquery-ui.min.js?' . $_SESSION['version']);
+$this->add_js_file('/bower_components/jQuery.MultiFile/jQuery.MultiFile.min.js?' . $_SESSION['version']);
+$this->add_js_file('main.js?' . $_SESSION['version']);
 
 //**********************************************************
 // Message Arrays
@@ -63,11 +67,11 @@ $img_base_dir = "{$this->html_path}/img";
 define('IMG_BASE_DIR', $img_base_dir);
 $icon_base_dir = "{$this->html_path}/img/icons";
 define('ICON_BASE_DIR', $icon_base_dir);
-$add_image = image("{$icon_base_dir}/add.png", '[+]', array('title' => 'Add', 'class' => 'gen_icon'));
+$add_image = css_icon('fa fa-plus');
 $edit_image = image("{$icon_base_dir}/edit.png", '[edit]', array('title' => 'Edit', 'class' => 'gen_icon'));
 $open_image = image("{$icon_base_dir}/folder_go.png", '[open]', array('title' => 'Open', 'class' => 'gen_icon'));
-$delete_image = image("{$icon_base_dir}/cross.png", '[delete]', array('title' => 'Delete', 'class' => 'gen_icon'));
-$view_image = image("{$icon_base_dir}/view.png", '[view]', array('title' => 'View', 'class' => 'gen_icon'));
+$delete_image = css_icon('fa fa-times');
+$view_image = css_icon('fa fa-eye');
 $check_image = image("{$icon_base_dir}/tick.png", '[x]', array('title' => 'Complete', 'class' => 'gen_icon'));
 $cat_image = image("{$icon_base_dir}/categories.png", '[!]', array('title' => 'List', 'class' => 'gen_icon'));
 $content_image = image("{$icon_base_dir}/page_edit.png", '[!]', array('title' => 'Content', 'class' => 'gen_icon'));
@@ -80,11 +84,6 @@ $revisions_image = image("{$icon_base_dir}/text_list_numbers.png", '[!]', array(
 // Code Mirror Off by Default
 //**********************************************************
 $codemirror_mode = false;
-
-//**********************************************************
-// Version
-//**********************************************************
-$this->add_xml('version', xml_escape($_SESSION['version']));
 
 //**********************************************************
 // Module URLs
@@ -126,12 +125,6 @@ $admin_status = (isset($_SESSION["lwcms_admin_status"])) ? ($_SESSION["lwcms_adm
 define('ADMIN_STATUS', $admin_status);
 
 //**********************************************************
-// Change Password / Help Page Functionality
-//**********************************************************
-$change_password = (isset($_SESSION["change_password"])) ? ($_SESSION["change_password"]) : (0);
-$help_page = (isset($_SESSION["help_page"])) ? ($_SESSION["help_page"]) : (0);
-
-//**********************************************************
 // Action
 //**********************************************************
 if (!isset($action) && isset($this->action)) { $action = $this->action; }
@@ -147,24 +140,6 @@ $access_levels[] = "View / Edit / Add / Delete / Manage";
 $access_deny_msg = "You do not have access to perform the requested action!";
 
 //**********************************************************
-// Disable Magic Quotes
-//**********************************************************
-if (get_magic_quotes_gpc()) {
-	if (!function_exists('stripslashes_deep')) {
-	    function stripslashes_deep($value)
-	    {
-	        $value = is_array($value) ? array_map('stripslashes_deep', $value) : stripslashes($value);
-	        return $value;
-	    }
-	}
-
-    $_POST = array_map('stripslashes_deep', $_POST);
-    $_GET = array_map('stripslashes_deep', $_GET);
-    $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
-    $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
-}
-
-//**********************************************************
 // Entry Stages
 //**********************************************************
 $stages_arr = array('Development', 'Test', 'Live');
@@ -172,7 +147,6 @@ $stages_arr = array('Development', 'Test', 'Live');
 //**********************************************************
 // Constants
 //**********************************************************
-define('DATA_SRC', $_SESSION['lwcms_ds']);
 define('SUPER_ADMIN', $_SESSION['super_admin']);
 define('BASE_URL', $page_url);
 define('DEFAULT_TIMESTAMP', 'n/j/Y g:i a');
@@ -210,4 +184,3 @@ $mod_common_dir = __DIR__ . '/common';
 define('MOD_COMMON_DIR', $mod_common_dir);
 
 
-?>

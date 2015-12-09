@@ -20,10 +20,10 @@
 //**************************************************************
 // Site Message Title / Header / Footer
 //**************************************************************
-if (isset($_SESSION['site_title'])) { $this->add_xml('site_title', xml_escape($_SESSION['site_title'])); }
-if (isset($_SESSION['msg_header'])) { $this->add_xml('msg_header', xml_escape($_SESSION['msg_header'])); }
-if (isset($_SESSION['msg_logo_url'])) { $this->add_xml('msg_logo_url', xml_escape($_SESSION['msg_logo_url'])); }
-if (isset($_SESSION['msg_footer'])) { $this->add_xml('msg_footer', xml_escape($_SESSION['msg_footer'])); }
+if (!empty($_SESSION['site_title'])) { $this->add_xml('site_title', xml_escape($_SESSION['site_title'])); }
+if (!empty($_SESSION['msg_header'])) { $this->add_xml('msg_header', xml_escape($_SESSION['msg_header'])); }
+if (!empty($_SESSION['msg_logo_url'])) { $this->add_xml('msg_logo_url', xml_escape($_SESSION['msg_logo_url'])); }
+if (!empty($_SESSION['msg_footer'])) { $this->add_xml('msg_footer', xml_escape($_SESSION['msg_footer'])); }
 
 //**************************************************************
 // Version
@@ -45,4 +45,8 @@ if (empty($config_arr['time_zone'])) {
 	$config_arr['time_zone'] = "America/New_York";
 }
 
-?>
+//**************************************************************
+// Current Year
+//**************************************************************
+$this->add_xml('curr_year', date('Y'));
+

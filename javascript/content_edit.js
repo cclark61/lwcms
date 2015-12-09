@@ -3,7 +3,7 @@ tinyMCE.init({
 	editor_selector : "mceEditor",
 	theme : "modern",
 	plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
+        "advlist autolink lists link image charmap print preview anchor moxiemanager",
         "searchreplace visualblocks code fullscreen",
         "insertdatetime media table contextmenu paste" // moxiemanager
     ],

@@ -22,18 +22,21 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
 <xsl:template name="login">
 	<xsl:param name="hide_form_header" />
 
-	<form class="form-signin" action="/" method="post">
+	<form role="form" class="form-signin" action="/" method="post">
 		<xsl:if test="$hide_form_header != 1">
 			<h3 class="form-signin-heading">Please sign in</h3>
 		</xsl:if>
-		<input type="text" class="input-block-level" placeholder="User ID" name="user" autocapitalize="off"/>
-		<input type="password" class="input-block-level" placeholder="Password" name="pass" />
-<!--
+		<xsl:if test="/page/application_data/phrase = ''">
+			<input type="text" class="form-control input-block-level" placeholder="Company Code" name="phrase" autocapitalize="off"/>
+		</xsl:if>
+		<input type="text" class="form-control input-block-level" placeholder="User ID" name="user" autocapitalize="off"/>
+		<input type="password" class="form-control input-block-level" placeholder="Password" name="pass" />
+		<!--
 		<label class="checkbox">
-			<input type="checkbox" value="remember-me" /> Remember me
+			<input type="checkbox" name="remember_me" value="1" /> Remember me
 		</label>
--->
-		<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+		-->
+		<button class="btn btn-default btn-primary" type="submit">Sign in</button>
 	</form>
 
 </xsl:template>

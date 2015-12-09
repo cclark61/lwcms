@@ -5,6 +5,7 @@
    <!ENTITY bull "&#149;" >
    <!ENTITY copy "&#169;" >
    <!ENTITY amp "&#38;" >
+   <!ENTITY mdash "&#8212;" >
 ]>
    
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -20,7 +21,7 @@
 	<title>
 		<xsl:choose>
 			<xsl:when test="//page/application_data/site_title != ''">
-				LWCMS - <xsl:value-of select="//page/application_data/site_title" disable-output-escaping="yes" />
+				<xsl:value-of select="//page/application_data/site_title" disable-output-escaping="yes" />
 			</xsl:when>
 			<xsl:otherwise>
 				LWCMS
@@ -94,7 +95,7 @@
 	<!--=============================================-->
 	<!-- jQuery / Bootstrap JS -->
 	<!--=============================================-->
-	<script type="text/javascript" src="/themes/bootstrap/js/bootstrap.min.js" />
+	<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js" />
 
 	<!--=============================================-->
 	<!-- Fav and touch icons -->
@@ -167,13 +168,9 @@
 								<b class="caret"></b>
 							</a>
 							<ul aria-labelledby="user_nav" role="menu" class="dropdown-menu">
-								
-								<xsl:if test="//page/application_data/change_password = '1'">
-									<li>
-										<a><xsl:attribute name="href"><xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" /></xsl:attribute>Change Password</a>
-									</li>
-								</xsl:if>
-								
+								<li>
+									<a><xsl:attribute name="href"><xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" /></xsl:attribute>Change Password</a>
+								</li>								
 								<li><a href="/?mod=logout" tabindex="-1">Logout</a></li>
 							</ul>
 						</li>
@@ -197,8 +194,8 @@
 	<!--=============================================-->
 	<!-- Base CSS -->
 	<!--=============================================-->
-	<link href="/themes/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="/themes/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/bower_components/AppJack/appjack.css" rel="stylesheet" type="text/css" />
 	<link href="/themes/default/msg_page.css" rel="stylesheet" type="text/css" media="all" />
 
 	<!--=============================================-->
@@ -212,11 +209,6 @@
 	<xsl:value-of select="string('&lt;!--[if lt IE 9]&gt;')" disable-output-escaping="yes" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<xsl:value-of select="string('&lt;![endif]--&gt;')" disable-output-escaping="yes" />
-
-	<!--=============================================-->
-	<!-- jQuery / Bootstrap JS -->
-	<!--=============================================-->
-	<!-- <script type="text/javascript" src="/themes/bootstrap/js/bootstrap.min.js" /> -->
 
 	<!--=============================================-->
 	<!-- Fav and touch icons -->
@@ -236,21 +228,25 @@
 <!--***********************************************-->
 <!--***********************************************-->
 <xsl:template name="msg_page_header">
-	<xsl:if test="//page/application_data/msg_logo_url != ''">
-		<div id="logo_wrapper">
-			<xsl:value-of select="//page/application_data/msg_logo_url" disable-output-escaping="yes" />
-		</div>
-	</xsl:if>
-	<h2 id="header">
+	<div id="logo_wrapper">
 		<xsl:choose>
-			<xsl:when test="//page/application_data/msg_header != ''">
-				<xsl:value-of select="//page/application_data/msg_header" disable-output-escaping="yes" />
+			<xsl:when test="//page/application_data/msg_logo_url != ''">
+				<img>
+					<xsl:attribute name="src">
+						<xsl:value-of select="//page/application_data/msg_logo_url" disable-output-escaping="yes" />
+					</xsl:attribute>			
+				</img>
 			</xsl:when>
 			<xsl:otherwise>
-				LWCMS
+				<img src="/img/logos/lwcms_icon_trans_128.png" />
 			</xsl:otherwise>
 		</xsl:choose>
-	</h2>
+	</div>
+	<xsl:if test="//page/application_data/msg_header != ''">
+		<h2 id="header" class="center">
+			<xsl:value-of select="//page/application_data/msg_header" disable-output-escaping="yes" />
+		</h2>
+	</xsl:if>
 </xsl:template>
 
 <!--***********************************************-->
@@ -262,9 +258,8 @@
 	<div id="footer_wrapper">
 		<div id="footer">
 			<p class="credit muted">
-				<xsl:if test="//page/application_data/msg_footer != ''">
-					<xsl:value-of select="//page/application_data/msg_footer" disable-output-escaping="yes" />
-				</xsl:if>
+				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
+				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
 			</p>
 		</div>
 	</div>
@@ -279,16 +274,8 @@
 	<div id="footer">
 		<div class="container">
 			<p class="credit muted">
-				<xsl:choose>
-					<xsl:when test="//page/application_data/site_footer != ''">
-						<xsl:value-of select="//page/application_data/site_footer" disable-output-escaping="yes" />
-						- Built using <a href="http://www.emonlade.net/lwcms/" target="_blank">LWCMS</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
-					</xsl:when>
-					<xsl:otherwise>
-						<a href="http://www.emonlade.net/lwcms/" target="_blank">LWCMS</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
-						- Licensed under the <a href="http://www.gnu.org/licenses/gpl-2.0.txt" target="_blank">GNU General Public License (GPL) v2.0</a>
-					</xsl:otherwise>
-				</xsl:choose>
+				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
+				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" /> <a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
 			</p>
 		</div>
 	</div>
