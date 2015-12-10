@@ -29,42 +29,6 @@
         </head>
 
         <body>
-
-        	<xsl:attribute name="class">
-        		<xsl:value-of select="concat('lwcms page ', /page/application_data/app_code)" />
-        	</xsl:attribute>
-
-        	<xsl:if test="/page/application_data/segment_0 != ''">
-	        	<xsl:attribute name="data-segment_0">
-	        		<xsl:value-of select="/page/application_data/segment_0" />
-	        	</xsl:attribute>
-        	</xsl:if>
-        	<xsl:if test="/page/application_data/segment_1 != ''">
-	        	<xsl:attribute name="data-segment_1">
-	        		<xsl:value-of select="/page/application_data/segment_1" />
-	        	</xsl:attribute>
-        	</xsl:if>
-			<xsl:if test="/page/application_data/segment_2 != ''">
-	        	<xsl:attribute name="data-segment_2">
-	        		<xsl:value-of select="/page/application_data/segment_2" />
-	        	</xsl:attribute>
-			</xsl:if>
-        	<xsl:if test="/page/application_data/segment_3 != ''">
-	        	<xsl:attribute name="data-segment_3">
-	        		<xsl:value-of select="/page/application_data/segment_3" />
-	        	</xsl:attribute>
-        	</xsl:if>
-        	<xsl:if test="/page/application_data/segment_4 != ''">
-	        	<xsl:attribute name="data-segment_4">
-	        		<xsl:value-of select="/page/application_data/segment_4" />
-	        	</xsl:attribute>
-        	</xsl:if>
-			<xsl:if test="/page/application_data/segment_5 != ''">
-	        	<xsl:attribute name="data-segment_5">
-	        		<xsl:value-of select="/page/application_data/segment_5" />
-	        	</xsl:attribute>
-			</xsl:if>
-
 	        <div id="page_wrapper">
 
 		        <!--=========================================-->
@@ -75,10 +39,10 @@
 				<!--=========================================-->
 				<!-- Content -->
 				<!--=========================================-->
-				<div id="main" class="container">
+				<div id="main" class="container-fluid">
 					<xsl:call-template name="content_header"/>
 					<xsl:call-template name="layout"/>
-					<!-- <xsl:call-template name="content_footer"/> -->
+					<xsl:call-template name="content_footer"/>
 				</div>
 					
 	        </div>

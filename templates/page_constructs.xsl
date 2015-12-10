@@ -81,7 +81,7 @@
 		<script type="text/javascript">
 			<xsl:attribute name="src">
 				<xsl:choose>
-					<xsl:when test="substring(., 1, 5) = '/cdn/'">
+					<xsl:when test="substring(., 1, 1) = '/'">
 						<xsl:value-of select="." disable-output-escaping="yes"  />
 					</xsl:when>
 					<xsl:otherwise>
@@ -93,11 +93,6 @@
 	</xsl:for-each>
 
 	<!--=============================================-->
-	<!-- jQuery / Bootstrap JS -->
-	<!--=============================================-->
-	<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js" />
-
-	<!--=============================================-->
 	<!-- Fav and touch icons -->
 	<!--=============================================-->
     <link rel="shortcut icon" href="/img/logos/lwcms_icon_trans_128.png" type="image/x-icon" />
@@ -107,6 +102,7 @@
  	<!-- Android versions 1.5 and 1.6 (newer versions accept the apple-touch-icon above) -->
 	<!--=============================================-->
     <link rel="apple-touch-icon-precomposed" href="/img/logos/lwcms_icon_white_256.png"/>
+
 </xsl:template>
 
 <!--***********************************************-->
@@ -116,68 +112,139 @@
 <!--***********************************************-->
 <xsl:template name="page_header">
 
-	<div id="header" class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a href="/" class="brand">
-					<xsl:choose>
-						<xsl:when test="//page/application_data/site_header != ''">
+	<xsl:variable name="mod_args" select="/page/current_module" />
+	<xsl:variable name="selected_index" select="/page/current_module_args/module_arg[@index=1]" />
+
+	<div id="device-check" style="height: 0;">
+		<div class="visible-xs"></div>
+		<div class="visible-sm"></div>
+		<div class="visible-md"></div>
+		<div class="visible-lg"></div>
+	</div>
+
+	<div id="header" class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+			<button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="navbar-brand">
+				<xsl:choose>
+					<xsl:when test="/page/application_data/site_logo_icon">
+						<img class="gen_icon3">
+							<xsl:attribute name="src">
+								<xsl:value-of select="/page/application_data/site_logo_icon" disable-output-escaping="yes" />
+							</xsl:attribute>
+						</img>
+					</xsl:when>
+					<xsl:otherwise>
+						<img src="/img/logos/lwcms_icon_trans_128.png" />
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:choose>
+					<xsl:when test="//page/application_data/site_header != ''">
+						<span>
 							<xsl:value-of select="//page/application_data/site_header" disable-output-escaping="yes" />
-						</xsl:when>
-						<xsl:otherwise>
-							LWCMS
-						</xsl:otherwise>
-					</xsl:choose>
-				</a>
-				<div class="nav-collapse collapse">
+						</span>
+						<!--
+						<xsl:value-of select="/page/application_data/header_title" disable-output-escaping="yes" />
+						-->
+					</xsl:when>
+					<xsl:otherwise>
+						<span>LWCMS</span>
+					</xsl:otherwise>
+				</xsl:choose>
+			</a>
+		</div>
+		<div class="navbar-collapse collapse">
 
-		            <xsl:call-template name="top_left_nav" />
+			<!--*******************************************-->
+			<!-- Main Menu -->
+			<!--*******************************************-->
+			<xsl:if test="string-length(/page/application_data/main_menu) > 0">
+				<ul class="nav navbar-nav home_nav">
 
-					<ul class="nav pull-right">
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="main_menu" href="#">
+							<i class="fa fa-th-large"></i>Menu<b class="caret"></b>
+						</a>
+						<ul aria-labelledby="main_menu" role="menu" class="dropdown-menu">
+							<xsl:value-of select="/page/application_data/main_menu" disable-output-escaping="yes" />
+						</ul>
+					</li>
 
-						<!-- ******************************************* -->
-						<!-- Admin Link -->
-						<!-- ******************************************* -->
+					<!--*******************************************-->
+					<!-- Current Module Sub-Menu -->
+					<!--*******************************************-->
+					<xsl:for-each select="/page/application_data/sub_menus/menus/*">
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="sub_menu" href="#">
+								<xsl:if test="./data/module_image != ''">
+									<i>
+										<xsl:attribute name="class">
+											<xsl:value-of select="./data/module_image" disable-output-escaping="yes" />
+										</xsl:attribute>
+									</i>
+								</xsl:if>
+								<xsl:value-of select="./data/modules_name" disable-output-escaping="yes" /><b class="caret"></b>
+							</a>
+							<ul aria-labelledby="sub_menu" role="menu" class="dropdown-menu">
+								<xsl:value-of select="./items" disable-output-escaping="yes" />
+							</ul>
+						</li>
+					</xsl:for-each>
+
+				</ul>
+			</xsl:if>
+
+			<!--*******************************************-->
+			<!-- Sub-modules Menu -->
+			<!--*******************************************-->
+			<!--
+			<xsl:call-template name="sub-modules"/>
+			-->
+
+			<!--*******************************************-->
+			<!-- Right Menus -->
+			<!--*******************************************-->
+			<ul class="nav navbar-nav pull-right">
+
+				<!--*******************************************-->
+				<!-- User Menu List -->
+				<!--*******************************************-->
+				<li class="dropdown" id="fat-menu">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="user_nav" href="#">
+						<i class="fa fa-user"></i>
+						<xsl:value-of select="/page/user/name" disable-output-escaping="yes" />
+						<b class="caret"></b>
+					</a>
+					<ul aria-labelledby="user_nav" role="menu" class="dropdown-menu dropdown-menu-right">
+						<xsl:value-of select="/page/application_data/user_menu" disable-output-escaping="yes" />
 						<xsl:if test="//page/application_data/lwcms_admin_status > 0">
 							<li>
 								<xsl:if test="//page/application_data/segment_1 = 'admin'">
 						    		<xsl:attribute name="class">active</xsl:attribute>
 					    		</xsl:if>
-								<a href="/admin/" tabindex="-1">Admin</a>
+								<a href="/admin/" tabindex="-1"><i class="fa fa-lock"></i>Admin</a>
 							</li>
 						</xsl:if>
-
-						<!-- ******************************************* -->
-						<!-- User Menu List -->
-						<!-- ******************************************* -->
-						<li class="dropdown" id="fat-menu">
-							<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="user_nav" href="#">
-								<xsl:choose>
-									<xsl:when test="//page/user/name">
-										<xsl:value-of select="//page/user/name" />
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:value-of select="//page/user/userid" />
-									</xsl:otherwise>
-								</xsl:choose>
-								<b class="caret"></b>
+						<li>
+							<a>
+								<xsl:attribute name="href">
+									<xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" />
+								</xsl:attribute>
+								<i class="fa fa-asterisk"></i>Change Password
 							</a>
-							<ul aria-labelledby="user_nav" role="menu" class="dropdown-menu">
-								<li>
-									<a><xsl:attribute name="href"><xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" /></xsl:attribute>Change Password</a>
-								</li>								
-								<li><a href="/?mod=logout" tabindex="-1">Logout</a></li>
-							</ul>
+						</li>
+						<li>
+							<a href="/?mod=logout" tabindex="-1"><i class="fa fa-sign-out"></i>Logout</a>
 						</li>
 					</ul>
-	            </div><!--/.nav-collapse -->
-	        </div>
-	    </div>
+				</li>
+			</ul>
+
+        </div><!--/.navbar-collapse -->
     </div>
 
 </xsl:template>

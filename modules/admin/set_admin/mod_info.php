@@ -16,4 +16,3 @@ if ($_SESSION["userid"] == "admin" || SUPER_ADMIN) {
 	$mod_image = image("{$icon_base_dir}/key.png", "[&raquo;]", array("title" => "Set Administrators", "class" => "gen_icon"));
 }
 
-?>

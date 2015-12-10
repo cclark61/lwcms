@@ -1,36 +1,33 @@
-/****************************************************************************/
-/****************************************************************************/
-/* Content Layout Styles */
-/****************************************************************************/
-/****************************************************************************/
-
+/*****************************************************************************/
+/*****************************************************************************/
+/* Page Layout Styles */
+/*****************************************************************************/
+/*****************************************************************************/
+/* 2B5FBE */
 form {
 	-moz-border-radius: 5px;
 	-webkit-radius: 5px;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 0 10px;
 }
 
-/*
-form input[type="submit"] {
-	color: white;
-	background-color: #5EB95E;
-    background-image: linear-gradient(to bottom, #62C462, #57A957);
-    background-repeat: repeat-x;
-	-moz-border-radius: 5px;
-	-webkit-radius: 5px;
-	border-radius: 5px;
-	padding: 5px 7px;
+legend {
+	/* -webkit-margin-bottom-collapse: separate; */
+	margin-bottom : 10px;
 }
-*/
+
+legend + * {
+    -webkit-margin-top-collapse: separate;
+    margin-top: 20px;
+}
+
 /***********************************************************************/
 /* Layout Styles */
 /***********************************************************************/
 
-html,
 body {
 	height: 100%;
-	background: url('/img/backgrounds/bg.jpg');
+	background: #eeeeee;
 }
 
 #page_wrapper {
@@ -40,12 +37,12 @@ body {
 }
 
 #main {
-	padding-top: 60px;
+	padding-top: 45px;
 	padding-bottom: 60px;
 }
 
 #content-wrapper {
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 #home-welcome {
@@ -53,23 +50,25 @@ body {
 }
 
 #footer {
-	height: 50px;
-	background-color: #F5F5F5;
+	/* height: 50px; */
+	/* background-color: #F5F5F5; */
+	padding-left: 20px;
 }
 
 #footer .credit {
-	margin: 20px 0;
+	margin: 0 0 20px 20px;
 }
 
 /***********************************************************************/
 /* Header */
 /***********************************************************************/
-#header .container-fluid {
-	padding-bottom: 7px;
+#header {
+	border-bottom: 3px #96B0DF solid;
 }
 
 #header.navbar .nav {
-	margin-top: 7px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #header.navbar .nav li a {
@@ -78,13 +77,36 @@ body {
 	border-radius: 5px;
 }
 
-#header .brand {
-	font-size: 24px;
-	margin-top: 7px;
+.navbar-brand {
+	margin-top: 0px;
+	padding: 10px;
+	padding-top: 7px;
+}
+
+.navbar-brand img {
+	height: 37px;
+	margin-right: 10px;
+}
+
+.navbar-brand > span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-brand > img {
+    display: inline-block;
+}
+
+.nav ul li.active_parent a {
+	background: #BFE1F2;
+}
+
+.nav ul li.active a {
+	color: white;
 }
 
 /***********************************************************************/
-/* Back Link */
+/* Back Links / Buttons */
 /***********************************************************************/
 #back_link {
 	background-color: #FAA732;
@@ -103,6 +125,28 @@ body {
 
 .layout-box-title #back-btn2 {
 	margin-top: -4px;
+}
+
+/***********************************************************************/
+/* Side Nav */
+/***********************************************************************/
+.side_navs ul {
+	list-style-type: none;
+	margin-left: 5px;
+}
+
+.side_navs ul li {
+	display: block;
+}
+
+.side_navs ul li a {
+	-moz-border-radius: 5px;
+	-webkit-radius: 5px;
+	border-radius: 5px;
+}
+
+.side_navs ul li.active_parent a {
+	background: #BFE1F2;
 }
 
 /***********************************************************************/
@@ -130,13 +174,15 @@ body {
 	padding: 0 5px;
 	margin-bottom: 10px;
 }
+
 .layout-box-title .icon {
 	float: left;
 	margin-right: 5px;
+	margin-left: 7px;
 }
 
 .layout-box-title {
-	height: 20px;
+	height: 43px;
   	border: 1px solid #ddd;
 	margin-bottom: -1px;
   	padding: 10px;
@@ -159,8 +205,8 @@ body {
 .layout-box-title .break {
     border-left: 1px solid #FCFCFC;
     border-right: 1px solid #DDDDDD;
-    margin: -12px 10px -10px;
-    padding: 12px 0 10px;
+    margin: -10px 10px -12px;
+    padding: 15px 0 12px;
 }
 
 .layout-box-title h2 {
@@ -190,6 +236,10 @@ body {
 /***********************************************************************/
 /* Horizontal Form */
 /***********************************************************************/
+.form-horizontal {
+	width: 100%;	
+}
+
 .form-horizontal .control-label {
     float: left;
     margin-right: 15px;
@@ -202,197 +252,12 @@ body {
 
 .form-horizontal .controls {
 	float: left;
+	display: inline-block;
 	margin-left: 0;
 }
 
-/***********************************************************************/
-/* Notifications & Labels */
-/***********************************************************************/
-
-.notification {
-	position: absolute;
-	top: -12px;
-	right: -12px;
-	line-height: 16px;
-	height: 16px;
-	padding: 6px 10px;
-	color: white !important;
-	text-shadow: 0 1px hsla(0, 0%, 0%, 0.25);
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 10px;
-  	-webkit-border-radius: 50em;
-       -moz-border-radius: 50em;
-          	border-radius: 50em;
-	-webkit-box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.08), inset 0 1px hsla(0, 100%, 100%, 0.3);
-	   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), inset 0 1px rgba(255, 255, 255, 0.3);
-			box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.08), inset 0 1px hsla(0, 100%, 100%, 0.3);
-}
-
-.notification-small {
-	padding: 2px 7px;
-	color: white !important;
-	text-shadow: 0 1px hsla(0, 0%, 0%, 0.25);
-	border-width: 1px;
-	border-style: solid;
-  	-webkit-border-radius: 50em;
-       -moz-border-radius: 50em;
-          	border-radius: 50em;
-	-webkit-box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.08), inset 0 1px hsla(0, 100%, 100%, 0.3);
-	   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), inset 0 1px rgba(255, 255, 255, 0.3);
-			box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.08), inset 0 1px hsla(0, 100%, 100%, 0.3);
-}
-
-.notification-small, 
-.notification {
-	border-color: #2FABE9;
-	background-color: #67C2EF;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(200, 80%, 82%)), color-stop(100%, hsl(200, 81%, 67%)));
-	background-image: -webkit-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -moz-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -ms-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -o-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-}
-
-.notification-small.green,
-.notification.green {
-	border-color: 	#5AAD34;
-	background-color: 	#78CD51;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(101, 54%, 71%)), color-stop(100%, hsl(101, 55%, 56%)));
-	background-image: -webkit-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -moz-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -ms-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -o-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: linear-gradient(top, 	hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-}
-
-.notification-small.yellow,
-.notification.yellow {
-	border-color: #F4A506;
-	background-color: #FABB3D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(40, 95%, 76%)), color-stop(100%, hsl(40, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-}
-
-.notification-small.red,
-.notification.red {
-	border-color: #FA5833;
-	background-color: #FA603D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(11, 95%, 76%)), color-stop(100%, hsl(11, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-}
-
-.label-important,
-.badge-important {
-  	border-color: #FA5833;
-	background-color: #FA603D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(11, 95%, 76%)), color-stop(100%, hsl(11, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-}
-
-.label-important[href],
-.badge-important[href] {
-  	border-color: #FA5833;
-	background-color: #FA603D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(11, 95%, 76%)), color-stop(100%, hsl(11, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-	background-image: linear-gradient(top, hsl(11, 95%, 76%), hsl(11, 95%, 61%));
-}
-
-.label-warning,
-.badge-warning {
-  	border-color: #F4A506;
-	background-color: #FABB3D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(40, 95%, 76%)), color-stop(100%, hsl(40, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-}
-
-.label-warning[href],
-.badge-warning[href] {
-  	border-color: #F4A506;
-	background-color: #FABB3D;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(40, 95%, 76%)), color-stop(100%, hsl(40, 95%, 61%)));
-	background-image: -webkit-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -moz-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -ms-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: -o-linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-	background-image: linear-gradient(top, hsl(40, 95%, 76%), hsl(40, 95%, 61%));
-}
-
-.label-success,
-.badge-success {
-  	border-color: 	#5AAD34;
-	background-color: 	#78CD51;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(101, 54%, 71%)), color-stop(100%, hsl(101, 55%, 56%)));
-	background-image: -webkit-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -moz-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -ms-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -o-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: linear-gradient(top, 	hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-}
-
-.label-success[href],
-.badge-success[href] {
-  	border-color: 	#5AAD34;
-	background-color: 	#78CD51;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(101, 54%, 71%)), color-stop(100%, hsl(101, 55%, 56%)));
-	background-image: -webkit-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -moz-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -ms-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: -o-linear-gradient(top, hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-	background-image: linear-gradient(top, 	hsl(101, 54%, 71%), hsl(101, 55%, 56%));
-}
-
-.label-info,
-.badge-info {
-  	border-color: #2FABE9;
-	background-color: #67C2EF;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(200, 80%, 82%)), color-stop(100%, hsl(200, 81%, 67%)));
-	background-image: -webkit-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -moz-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -ms-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -o-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-}
-
-.label-info[href],
-.badge-info[href] {
-  	border-color: #2FABE9;
-	background-color: #67C2EF;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(200, 80%, 82%)), color-stop(100%, hsl(200, 81%, 67%)));
-	background-image: -webkit-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -moz-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -ms-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: -o-linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-	background-image: linear-gradient(top, hsl(200, 80%, 82%), hsl(200, 81%, 67%));
-}
-
-/***********************************************************************/
-/* Sidebar */
-/***********************************************************************/
-div.sidebar a.active {
-	font-weight: bold;
-	color: #94CE47;
+form.wide-labels .control-label {
+    width: 200px;
 }
 
 /***********************************************************************/
@@ -411,29 +276,53 @@ div.sidebar a.active {
 	    width: 500px;
 	}
 
+	#main .side_navs {
+		width: 13% !important;
+	}
+
+	#main .content_col {
+		width: 84% !important;
+	}
+
+	#content-wrapper .col-md-12 .layout-box-content {
+		min-height: 500px;
+	}
+
+	#content_footer {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
 }
 
 /***********************************************************/
 /* Small Desktop */
 /***********************************************************/
-@media (min-width: 980px) {
+@media (min-width: 992px) {
 
 	input.wide,
 	textarea.wide {
 	    width: 412px;
 	}
-	
+
+	#content-wrapper .col-md-12 .layout-box-content {
+		min-height: 500px;
+	}
+
+	#content_footer {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
 }
 
 /***********************************************************/
 /* Portrait tablet to landscape and Desktop */
 /***********************************************************/
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 992px) {
 
-	#main.container-fluid {
-		padding-top: 0;
-		padding-left: 0;
-		padding-right: 0;
+	.content_col {
+		width: 95% !important;
 	}
 
 	.navbar-fixed-top {
@@ -444,7 +333,17 @@ div.sidebar a.active {
 	textarea.wide {
 	    width: 412px;
 	}
-	
+
+
+	#content-wrapper .col-md-12 .layout-box-content {
+		min-height: 500px;
+	}
+
+	#content_footer {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
 }
 
 /***********************************************************/
@@ -452,26 +351,60 @@ div.sidebar a.active {
 /***********************************************************/
 @media (max-width: 767px) {
 
-	#main.container-fluid {
+	.table-responsive {
+		padding: 5px 8px;
+		-moz-border-radius: 3px;
+		-webkit-radius: 3px;
+		border-radius: 3px;
+	}
+
+	#main.container {
 		padding-top: 0;
 		padding-left: 0;
 		padding-right: 0;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 60px;
+	}
+	
+	#back-btn {
+		margin: -10px 5px 10px;
+		padding-top: 10px;
+	}
+
+	#back-btn .btn {
+		display: block;
+	}
+
+	#content-wrapper {
+		margin-top: 0;
+	}
+
+	#content-wrapper .col-md-12 {
+		padding-left: 0;
+		padding-right: 0;		
+	}
+
+	#content-wrapper .col-md-12 .layout-box-content {
+		min-height: 500px;
 	}
 
 	#footer {
-		margin-left: -20px;
-		margin-right: -20px;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: 0;
 	}
 
-	#back-btn {
-		margin-top: 10px;
+	#footer .credit {
+		margin-top: 5px;
 	}
 
 	input.wide,
 	textarea.wide {
 	    width: 300px;
+	}
+
+	#content_footer {
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 
 }
@@ -481,11 +414,28 @@ div.sidebar a.active {
 /***********************************************************/
 @media (max-width: 480px) {
 
+	#content-wrapper .col-md-12 .layout-box-content {
+		min-height: 300px;
+	}
+
+	#content_footer {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	/* 
+	Bug fix, bootstrap was using position: fixed
+	Which was not allowing a clickable link on mobile... strange
+	 */
+	.nav-collapse .dropdown-menu {
+		position: relative !important;
+	}
+
 	input.wide,
 	textarea.wide {
 	    width: 300px;
 	}
-
+	
 }
 
 /***********************************************************/

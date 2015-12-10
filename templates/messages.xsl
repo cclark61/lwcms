@@ -46,7 +46,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
 <!--******************************************************************************-->
 <xsl:template name="message">
     <xsl:param name="msg_code" select="'default-value'"/>
-    <xsl:variable name="msg_base" select="//page/message/message_list/msg[@code=$msg_code]" />
+    <xsl:variable name="msg_base" select="/page/message/message_list/msg[@code=$msg_code]" />
 
     <div>
 
@@ -60,12 +60,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
 	    			<xsl:value-of select="string(' alert-error')" disable-output-escaping="yes" />    		
 	    		</xsl:when>
 	    		<xsl:otherwise>
-	    			<xsl:value-of select="string(' alert-block')" disable-output-escaping="yes" />    		
+	    			<xsl:value-of select="string(' alert-warning')" disable-output-escaping="yes" />    		
 	    		</xsl:otherwise>
 	    	</xsl:choose>
     	</xsl:attribute>
 
-	    <xsl:if test="//page/message/message_list/msg[@code=$msg_code]">
+	    <xsl:if test="/page/message/message_list/msg[@code=$msg_code]">
 
             <xsl:for-each select="$msg_base/text">
                 <div class="message"><xsl:value-of select="." disable-output-escaping="yes"/></div>
@@ -74,18 +74,18 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
             <xsl:if test="$msg_base/login_desc">
 	            <img alt="Message" title="Message" class="gen_icon">
 					<xsl:attribute name="src">
-						<xsl:value-of select="concat(//page/html_path, '/img/icons/information.png')" disable-output-escaping="yes" />
+						<i class="fa fa-info-circle"></i>
 					</xsl:attribute>
 				</img>
                 <a>
-                    <xsl:attribute name="href"><xsl:value-of select="//page/message/login_link"/></xsl:attribute>
+                    <xsl:attribute name="href"><xsl:value-of select="/page/message/login_link"/></xsl:attribute>
                     <xsl:value-of select="$msg_base/login_desc" disable-output-escaping="yes" />    
                 </a>
             </xsl:if>
 
             <xsl:if test="$msg_base/back_desc">
                 <a>
-                    <xsl:attribute name="href"><xsl:value-of select="//page/message/back_link"/></xsl:attribute>
+                    <xsl:attribute name="href"><xsl:value-of select="/page/message/back_link"/></xsl:attribute>
                     <xsl:value-of select="$msg_base/back_desc" disable-output-escaping="yes" />    
                 </a>
             </xsl:if>

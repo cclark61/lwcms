@@ -173,6 +173,8 @@ $table->identify("", "dir_list table table-striped");
 $table->set_col_attr('size', 'class', 'hidden-phone', false, true);
 //$table->set_col_attr('size', 'class', 'rs-col-15');
 //$table->set_col_attr('delete', 'class', '');
-$table->render();
 
-?>
+ob_start();
+$table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
+

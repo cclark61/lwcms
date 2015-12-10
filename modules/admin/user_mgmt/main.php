@@ -100,6 +100,8 @@ if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"
 $table->identify("", "table table-striped");
 $table->set_col_attr('admin', 'class', 'hidden-phone', false, true);
 $table->set_col_attr('disabled', 'class', 'hidden-phone', false, true);
-$table->render();
 
-?>
+ob_start();
+$table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
+

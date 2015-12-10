@@ -90,7 +90,7 @@ $table->set_col_attr('phrase', 'class', 'hidden-phone', false, true);
 $table->set_col_attr('mod_dir', 'class', 'hidden-phone', false, true);
 $table->set_col_attr('content_dir', 'class', 'hidden-phone', false, true);
 
+ob_start();
 $table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
 
-
-?>

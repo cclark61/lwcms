@@ -13,4 +13,3 @@
 
 print "Application Settings Comming Soon...";
 
-?>

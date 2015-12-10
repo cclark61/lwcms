@@ -100,8 +100,7 @@ if ($proceed) {
 			$ext = $file_parts[$fp_size - 1];
 			if ($fp_size > 1) {
 				if ($ext == 'html' || $ext == 'xhtml' || $ext == 'htm') {
-					$this->add_js_file("tinymce/js/tinymce/tinymce.min.js");
-					$this->add_js_file("content_edit.js");
+					$load_tinymce = true;
 					$strip_cdata = true;
 				}
 				else { $codemirror_mode = $ext; }

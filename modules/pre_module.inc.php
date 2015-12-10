@@ -39,9 +39,8 @@ $this->add_css_file('/themes/default/lwcms.css?' . $_SESSION['version']);
 //**********************************************************
 // Add-in Javascript
 //**********************************************************
-$this->add_js_file('/SwellCore/javascript/stay_standalone.js?'. $_SESSION['version']);
-$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
 $this->add_js_file('/bower_components/jquery/dist/jquery.min.js?' . $_SESSION['version']);
+$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
 $this->add_js_file('/bower_components/jquery-ui/jquery-ui.min.js?' . $_SESSION['version']);
 $this->add_js_file('/bower_components/jQuery.MultiFile/jQuery.MultiFile.min.js?' . $_SESSION['version']);
 $this->add_js_file('main.js?' . $_SESSION['version']);
@@ -63,22 +62,18 @@ $breadcrumbs = array();
 //**********************************************************
 // Images
 //**********************************************************
-$img_base_dir = "{$this->html_path}/img";
-define('IMG_BASE_DIR', $img_base_dir);
-$icon_base_dir = "{$this->html_path}/img/icons";
-define('ICON_BASE_DIR', $icon_base_dir);
 $add_image = css_icon('fa fa-plus');
-$edit_image = image("{$icon_base_dir}/edit.png", '[edit]', array('title' => 'Edit', 'class' => 'gen_icon'));
-$open_image = image("{$icon_base_dir}/folder_go.png", '[open]', array('title' => 'Open', 'class' => 'gen_icon'));
+$edit_image = css_icon('fa fa-pencil');
+$open_image = css_icon('fa fa-folder-open-o');
 $delete_image = css_icon('fa fa-times');
 $view_image = css_icon('fa fa-eye');
-$check_image = image("{$icon_base_dir}/tick.png", '[x]', array('title' => 'Complete', 'class' => 'gen_icon'));
-$cat_image = image("{$icon_base_dir}/categories.png", '[!]', array('title' => 'List', 'class' => 'gen_icon'));
-$content_image = image("{$icon_base_dir}/page_edit.png", '[!]', array('title' => 'Content', 'class' => 'gen_icon'));
-$entries_image = image("{$icon_base_dir}/categories.png", '[!]', array('title' => 'Entries', 'class' => 'gen_icon'));
-$folder_image = image("{$icon_base_dir}/folder.png", '[!]', array('title' => 'Folder', 'class' => 'gen_icon'));
-$cont_ent_image = image("{$icon_base_dir}/page.png", '[!]', array('title' => 'Entry', 'class' => 'gen_icon'));
-$revisions_image = image("{$icon_base_dir}/text_list_numbers.png", '[!]', array('title' => 'Revisions', 'class' => 'gen_icon'));
+$check_image = css_icon('fa fa-check');
+$cat_image = css_icon('fa fa-list-ul');
+$content_image = css_icon('fa fa-file-text-o');
+$entries_image = css_icon('fa fa-list');
+$folder_image = css_icon('fa fa-folder-o');
+$cont_ent_image = $content_image;
+$revisions_image = css_icon('fa fa-list-ol');
 
 //**********************************************************
 // Code Mirror Off by Default
@@ -182,5 +177,4 @@ $publish_statuses = array('Draft', 'Published');
 //**********************************************************
 $mod_common_dir = __DIR__ . '/common';
 define('MOD_COMMON_DIR', $mod_common_dir);
-
 

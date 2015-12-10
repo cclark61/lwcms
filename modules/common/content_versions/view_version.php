@@ -42,4 +42,3 @@ else {
 	print 'No content revision found.';
 }
 
-?>

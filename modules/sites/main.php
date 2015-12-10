@@ -12,11 +12,6 @@
 //***************************************************************************
 
 //========================================================================
-// Images
-//========================================================================
-$config_image = image("{$icon_base_dir}/cog.png", "[&raquo;]", array("title" => "Site Details", "class" => "gen_icon"));
-
-//========================================================================
 // Top Module Links
 //========================================================================
 if ($admin_status > 0) {
@@ -75,8 +70,8 @@ foreach ($sites as $key => &$site) {
 	$edit_link = add_url_params($mod_base_url, array("action" => "edit", "id" => $id));
 	$view_link = "{$mod_base_url}{$id}/";
 	$delete_link = add_url_params($mod_base_url, array("action" => "confirm_delete", "id" => $id));
-	$site["actions"] = anchor($edit_link, $config_image, array('class' => 'btn'));
-	$site["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn site_delete'));
+	$site["actions"] = anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
+	$site["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger site_delete'));
 	if ($site_url != '') {
 		$site["site_url"] = anchor($site_url, $site_url, array('target' => '_blank'));
 	}
@@ -111,6 +106,8 @@ $table->display_headers(false);
 $table->identify("", "site_list table table-striped");
 $table->set_col_attr('site_url', 'class', 'hidden-phone');
 $table->set_col_attr('site_desc', 'class', 'hidden-phone hidden-tablet');
-$table->render();
 
-?>
+ob_start();
+$table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
+

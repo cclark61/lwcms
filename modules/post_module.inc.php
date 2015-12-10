@@ -29,95 +29,25 @@ $this->add_xml("theme", $this->theme);
 $this->add_xml("theme_path", "{$this->html_path}/themes/{$this->theme}");
 
 //**************************************************************
-// CodeMirror
+// Load Auxillary JavaScript if Necessary
 //**************************************************************
-if ($codemirror_mode) {
-	$use_code_mirror = false;
-
-	switch ($codemirror_mode) {
-		case 'class.php':
-		case 'inc.php':
-		case 'php':
-			$use_code_mirror = true;
-			$cm_js_files = array(
-				'codemirror/mode/clike/clike.js', 
-				'codemirror/mode/php/php.js', 
-				'codemirror_php.js'
-			);
-			break;
-
-		case 'js':
-			$use_code_mirror = true;
-			$cm_js_files = array(
-				'codemirror/mode/clike/clike.js',
-				'codemirror/mode/javascript/javascript.js', 
-				'codemirror_js.js'
-			);
-			break;
-
-		case 'css':
-			$use_code_mirror = true;
-			$cm_js_files = array(
-				'codemirror/mode/css/css.js', 
-				'codemirror_css.js'
-			);
-			break;
-
-		case 'xsl':
-		case 'xml':
-		case 'xhtml':
-			$use_code_mirror = true;
-			$cm_js_files = array(
-				'codemirror/mode/xml/xml.js',
-				'codemirror_xml.js'
-			);
-			break;
-
-	}
-
-	if ($use_code_mirror) {
-		$this->add_js_file('codemirror/lib/codemirror.js');
-		$this->add_css_file(
-			array(
-				'href' => '/javascript/codemirror/lib/codemirror.css',
-				'media' => 'all',
-				'rel' => 'stylesheet',
-				'type' => 'text/css'
-			)
-		);
-		$this->add_css_file(
-			array(
-				'href' => '/javascript/codemirror/theme/default.css',
-				'media' => 'all',
-				'rel' => 'stylesheet',
-				'type' => 'text/css'
-			)
-		);
-
-		foreach ($cm_js_files as $js_file) {
-			$this->add_js_file($js_file);
-		}
-	}
-}
+include(__DIR__ . '/common/load-js.php');
 
 //**************************************************************
 // Module Title
 //**************************************************************
-if (!isset($mod_title)) { $mod_title = "???"; }
+if (empty($mod_title)) { $mod_title = "???"; }
 $this->add_xml("mod_title", xml_escape($mod_title));
 
 //**************************************************************
 // Back Link
 //**************************************************************
-if (isset($back_link)) { $this->add_xml("back_link", xml_escape($back_link)); }
+if (!empty($back_link)) { $this->add_xml("back_link", xml_escape($back_link)); }
 
 //**************************************************************
 // Module Images / Icon Classes
 //**************************************************************
-if (isset($mod_icon_class)) { $this->add_xml("mod_icon_class", xml_escape($mod_icon_class)); }
-//if (isset($mod_icon_class1)) { $this->add_xml("mod_icon_class1", xml_escape($mod_icon_class1)); }
-//if (isset($mod_icon_class2)) { $this->add_xml("mod_icon_class2", xml_escape($mod_icon_class2)); }
-//if (isset($mod_icon_class3)) { $this->add_xml("mod_icon_class3", xml_escape($mod_icon_class3)); }
+if (!empty($mod_icon_class)) { $this->add_xml("mod_icon_class", xml_escape($mod_icon_class)); }
 
 //**************************************************************
 // Links
@@ -137,14 +67,14 @@ $this->add_xml("lwcms_admin_status", $admin_status);
 //**************************************************************
 // Site Title / Header / Footer
 //**************************************************************
-if (isset($_SESSION["site_title"])) { $this->add_xml("site_title", xml_escape($_SESSION["site_title"])); }
-if (isset($_SESSION["site_header"])) { $this->add_xml("site_header", xml_escape($_SESSION["site_header"])); }
-if (isset($_SESSION["site_footer"])) { $this->add_xml("site_footer", xml_escape($_SESSION["site_footer"])); }
+if (!empty($_SESSION["site_title"])) { $this->add_xml("site_title", xml_escape($_SESSION["site_title"])); }
+if (!empty($_SESSION["site_header"])) { $this->add_xml("site_header", xml_escape($_SESSION["site_header"])); }
+if (!empty($_SESSION["site_footer"])) { $this->add_xml("site_footer", xml_escape($_SESSION["site_footer"])); }
 
 //**************************************************************
 // Layout Type
 //**************************************************************
-if (isset($layout_type)) { $this->add_xml("layout_type", xml_escape($layout_type)); }
+if (!empty($layout_type)) { $this->add_xml("layout_type", xml_escape($layout_type)); }
 
 //**************************************************************
 // Messages
@@ -202,4 +132,3 @@ function format_page_messages()
 	return $messages;
 }
 
-?>

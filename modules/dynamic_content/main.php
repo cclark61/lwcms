@@ -299,7 +299,10 @@ $table->set_col_attr("cat_id", "class", "hidden-phone hidden-tablet", false, tru
 $table->set_col_attr("post_date", "class", "hidden-phone", false, true);
 $table->set_col_attr("publish_status", "class", "hidden-phone", false, true);
 $table->set_col_attr("active", "class", "hidden-phone", false, true);
+
+ob_start();
 $table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
 
 //==================================================================
 // Include Modal

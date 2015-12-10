@@ -51,15 +51,11 @@ if (isset($next_action[$action])) {
 
     	case "add":
     		$form_label = "Add a blog entry";
-    		$this->add_js_file("tinymce/js/tinymce/tinymce.min.js");
-			$this->add_js_file("content_edit.js");
     		include("frm_main.php");
     		break;
 
 		case "edit":
 			$form_label = "Edit a blog entry";
-			$this->add_js_file("tinymce/js/tinymce/tinymce.min.js");
-			$this->add_js_file("content_edit.js");
 			include("frm_main.php");
 			break;
 
@@ -91,4 +87,3 @@ else {
     include("main.php");
 }
 
-?>

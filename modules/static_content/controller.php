@@ -16,4 +16,3 @@ $base_display = 'CONTENT_DIRECTORY';
 $root_folder_name = 'static content directory';
 include(__DIR__ . '/../common/editor/controller.php');
 
-?>

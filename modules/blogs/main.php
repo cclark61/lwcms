@@ -108,4 +108,7 @@ $table->set_col_attr('blog_url', 'class', 'hidden-phone', false, true);
 $table->set_col_attr('active', 'class', 'hidden-phone', false, true);
 $table->render();
 
-?>
+ob_start();
+$table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
+

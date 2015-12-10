@@ -91,6 +91,8 @@ $table = new rs_list($data_order, $cats);
 $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->identify("", "cats_list table table-striped");
-$table->render();
 
-?>
+ob_start();
+$table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
+

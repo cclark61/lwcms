@@ -70,11 +70,13 @@ $table->empty_message("--");
 $table->identify("", "table table-striped");
 $table->label('Revisions');
 $table->set_col_attr("create_user", "class", "hidden-phone", false, true);
+
+ob_start();
 $table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
 
 //==================================================================
 // Include Modal
 //==================================================================
 include(__DIR__ . '/version_modal.html');
 
-?>
