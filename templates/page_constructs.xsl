@@ -65,7 +65,9 @@
 	<!--=============================================-->
 	<!-- Standalone Web App JavaScript for Safari -->
 	<!--=============================================-->
+	<!--
 	<script src="/javascript/stay_standalone.js" type="text/javascript"></script>
+	-->
 
 	<!--=============================================-->
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->

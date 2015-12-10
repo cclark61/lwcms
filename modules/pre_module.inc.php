@@ -30,18 +30,11 @@ load_plugin("lwcms");
 //**********************************************************
 // Add-in CSS
 //**********************************************************
-//$this->add_css_file('/bower_components/bootstrap/dist/css/bootstrap.min.css?') . $_SESSION['version'];
-//$this->add_css_file('/bower_components/fontawesome/css/font-awesome.min.css?' . $_SESSION['version']);
-//$this->add_css_file('/bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css?' . $_SESSION['version']);
-//$this->add_css_file('/bower_components/AppJack/appjack.css?' . $_SESSION['version']);
 $this->add_css_file('/themes/default/lwcms.css?' . $_SESSION['version']);
 
 //**********************************************************
 // Add-in Javascript
 //**********************************************************
-//$this->add_js_file('/bower_components/jquery/dist/jquery.min.js?' . $_SESSION['version']);
-//$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
-//$this->add_js_file('/bower_components/jquery-ui/jquery-ui.min.js?' . $_SESSION['version']);
 $this->add_js_file('/bower_components/jQuery.MultiFile/jQuery.MultiFile.min.js?' . $_SESSION['version']);
 $this->add_js_file('main.js?' . $_SESSION['version']);
 
@@ -177,6 +170,3 @@ $mod_common_dir = __DIR__ . '/common';
 //**********************************************************
 define('SUPER_ADMIN', $_SESSION['super_admin']);
 define('ADMIN_STATUS', $admin_status);
-//define('BASE_URL', $page_url);
-//define('DEFAULT_TIMESTAMP', 'n/j/Y g:i a');
-//define('MOD_COMMON_DIR', $mod_common_dir);

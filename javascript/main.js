@@ -3,30 +3,12 @@
 //****************************************************************
 $(document).ready(function()
 {
-	//alert($(window).width() + ' x ' + $(window).height());
-
-	//****************************************************
-	// Data Pickers
-	//****************************************************
-	if ( $(".datepicker").length ) {
-		$( ".datepicker" ).datepicker();
-	}
-
 	//****************************************************
 	// Site Delete Verification
 	//****************************************************
 	$('.site_delete').click(function () {
 		return confirm("Are you sure you want to permanently DELETE this site and all of it's associated data?");
 	});
-
-	//****************************************************
-	// Filter Change Event
-	//****************************************************
-	if ( $(".filter").length ) {
-		$(".filter").change(function() {
-			window.location = $(this).val();
-		});
-	}
 
 	//**************************************************************************
 	//**************************************************************************

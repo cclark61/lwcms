@@ -15,7 +15,7 @@ body {
 }
 
 .lwcms.page #main {
-	padding-top: 45px;
+	padding-top: 42px;
 	padding-bottom: 60px;
 }
 
@@ -32,12 +32,23 @@ body {
 /***********************************************************************/
 .lwcms.page #header {
 	border-bottom: 3px #96B0DF solid;
+	height: 50px;
+}
+
+.lwcms.page #header.navbar .nav {
+	margin-top: 0;
+}
+
+.lwcms.page .navbar-nav > li > a {
+	padding: 8px;
+	margin-top: 5px;
+	margin-right: 10px;
 }
 
 .lwcms.page .navbar-brand {
 	margin-top: 0px;
 	padding: 10px;
-	padding-top: 7px;
+	padding-top: 5px;
 }
 
 .lwcms.page .navbar-brand img {
