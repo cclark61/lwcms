@@ -131,7 +131,7 @@ if (isset($change_row)) {
 $table->identify("", "table table-striped");
 $table->label('Folders');
 $table->set_col_attr("entry_type", "class", "icon_col");
-$table->set_col_attr("url_tag", "class", "hidden-phone", false, true);
+$table->set_col_attr("url_tag", "class", "hidden-xs", false, true);
 $table->render();
 
 //*******************************************************************
@@ -293,12 +293,12 @@ $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->identify("", "entry_list table table-striped");
 $table->label('Entries');
-$table->set_col_attr("url_tag", "class", "hidden-phone hidden-tablet", false, true);
-$table->set_col_attr("entry_author", "class", "hidden-phone hidden-tablet", false, true);
-$table->set_col_attr("cat_id", "class", "hidden-phone hidden-tablet", false, true);
-$table->set_col_attr("post_date", "class", "hidden-phone", false, true);
-$table->set_col_attr("publish_status", "class", "hidden-phone", false, true);
-$table->set_col_attr("active", "class", "hidden-phone", false, true);
+$table->set_col_attr("url_tag", "class", "hidden-xs hidden-sm", false, true);
+$table->set_col_attr("entry_author", "class", "hidden-xs hidden-sm", false, true);
+$table->set_col_attr("cat_id", "class", "hidden-xs hidden-sm", false, true);
+$table->set_col_attr("post_date", "class", "hidden-xs", false, true);
+$table->set_col_attr("publish_status", "class", "hidden-xs", false, true);
+$table->set_col_attr("active", "class", "hidden-xs", false, true);
 
 ob_start();
 $table->render();

@@ -16,4 +16,3 @@ $base_display = 'DOCUMENT_ROOT';
 $root_folder_name = 'document root';
 include(__DIR__ . '/../common/editor/controller.php');
 
-?>

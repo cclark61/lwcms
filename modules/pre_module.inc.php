@@ -17,31 +17,31 @@
 //=========================================================================
 //=========================================================================
 
+//*************************************************************************
+// Include OpenCore Pre-Module File
+//*************************************************************************
+include(OPENCORE_PATH . '/modules/pre_module.inc.php');
+
 //**********************************************************
 // Load Plugins
 //**********************************************************
-load_plugin("ssv");
-load_plugin("xhtml_gen");
-load_plugin("date_time");
 load_plugin("lwcms");
-load_plugin("POP_bootstrap3");
-load_plugin('POP_format_content');
 
 //**********************************************************
 // Add-in CSS
 //**********************************************************
-$this->add_css_file('/bower_components/bootstrap/dist/css/bootstrap.min.css?') . $_SESSION['version'];
-$this->add_css_file('/bower_components/fontawesome/css/font-awesome.min.css?' . $_SESSION['version']);
-$this->add_css_file('/bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css?' . $_SESSION['version']);
-$this->add_css_file('/bower_components/AppJack/appjack.css?' . $_SESSION['version']);
+//$this->add_css_file('/bower_components/bootstrap/dist/css/bootstrap.min.css?') . $_SESSION['version'];
+//$this->add_css_file('/bower_components/fontawesome/css/font-awesome.min.css?' . $_SESSION['version']);
+//$this->add_css_file('/bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css?' . $_SESSION['version']);
+//$this->add_css_file('/bower_components/AppJack/appjack.css?' . $_SESSION['version']);
 $this->add_css_file('/themes/default/lwcms.css?' . $_SESSION['version']);
 
 //**********************************************************
 // Add-in Javascript
 //**********************************************************
-$this->add_js_file('/bower_components/jquery/dist/jquery.min.js?' . $_SESSION['version']);
-$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
-$this->add_js_file('/bower_components/jquery-ui/jquery-ui.min.js?' . $_SESSION['version']);
+//$this->add_js_file('/bower_components/jquery/dist/jquery.min.js?' . $_SESSION['version']);
+//$this->add_js_file('/bower_components/bootstrap/dist/js/bootstrap.min.js?' . $_SESSION['version']);
+//$this->add_js_file('/bower_components/jquery-ui/jquery-ui.min.js?' . $_SESSION['version']);
 $this->add_js_file('/bower_components/jQuery.MultiFile/jQuery.MultiFile.min.js?' . $_SESSION['version']);
 $this->add_js_file('main.js?' . $_SESSION['version']);
 
@@ -71,14 +71,17 @@ $check_image = css_icon('fa fa-check');
 $cat_image = css_icon('fa fa-list-ul');
 $content_image = css_icon('fa fa-file-text-o');
 $entries_image = css_icon('fa fa-list');
+$file_image = css_icon('fa fa-file-text-o');
 $folder_image = css_icon('fa fa-folder-o');
 $cont_ent_image = $content_image;
 $revisions_image = css_icon('fa fa-list-ol');
-
-//**********************************************************
-// Code Mirror Off by Default
-//**********************************************************
-$codemirror_mode = false;
+$open_folder_image = css_icon('fa fa-folder-open-o');
+$add_file_image = $add_image;
+$del_file_image = $delete_image;
+$add_folder_image = $add_image;
+$del_folder_image = $delete_image;
+$upload_file_image = css_icon('fa fa-upload');
+$image_image = css_icon('fa fa-image-o');
 
 //**********************************************************
 // Module URLs
@@ -117,7 +120,6 @@ for ($i=0; $i <= $max_segments; $i++) {
 // Admin Status
 //**********************************************************
 $admin_status = (isset($_SESSION["lwcms_admin_status"])) ? ($_SESSION["lwcms_admin_status"]) : (0);
-define('ADMIN_STATUS', $admin_status);
 
 //**********************************************************
 // Action
@@ -138,13 +140,6 @@ $access_deny_msg = "You do not have access to perform the requested action!";
 // Entry Stages
 //**********************************************************
 $stages_arr = array('Development', 'Test', 'Live');
-
-//**********************************************************
-// Constants
-//**********************************************************
-define('SUPER_ADMIN', $_SESSION['super_admin']);
-define('BASE_URL', $page_url);
-define('DEFAULT_TIMESTAMP', 'n/j/Y g:i a');
 
 //**********************************************************
 // Default Layout Type
@@ -176,5 +171,12 @@ $publish_statuses = array('Draft', 'Published');
 // Modules Common Directory
 //**********************************************************
 $mod_common_dir = __DIR__ . '/common';
-define('MOD_COMMON_DIR', $mod_common_dir);
 
+//**********************************************************
+// Constants
+//**********************************************************
+define('SUPER_ADMIN', $_SESSION['super_admin']);
+define('ADMIN_STATUS', $admin_status);
+//define('BASE_URL', $page_url);
+//define('DEFAULT_TIMESTAMP', 'n/j/Y g:i a');
+//define('MOD_COMMON_DIR', $mod_common_dir);

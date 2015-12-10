@@ -31,7 +31,7 @@
         <body>
 
         	<xsl:attribute name="class">
-        		<xsl:value-of select="concat('lwcms page ', /page/application_data/app_code)" />
+        		<xsl:value-of select="concat('OpenCore page lwcms ', /page/application_data/app_code)" />
         	</xsl:attribute>
 
         	<xsl:if test="/page/application_data/segment_0 != ''">

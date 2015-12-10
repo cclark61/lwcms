@@ -138,11 +138,11 @@ $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->identify("", "entries_list table table-striped");
 $table->label($blog_title);
-$table->set_col_attr("entry_author", "class", "hidden-phone", false, true);
-$table->set_col_attr("category", "class", "hidden-phone", false, true);
-$table->set_col_attr("post_date", "class", "hidden-phone", false, true);
-$table->set_col_attr("publish_status", "class", "hidden-phone", false, true);
-$table->set_col_attr("active", "class", "hidden-phone", false, true);
+$table->set_col_attr("entry_author", "class", "hidden-xs", false, true);
+$table->set_col_attr("category", "class", "hidden-xs", false, true);
+$table->set_col_attr("post_date", "class", "hidden-xs", false, true);
+$table->set_col_attr("publish_status", "class", "hidden-xs", false, true);
+$table->set_col_attr("active", "class", "hidden-xs", false, true);
 
 ob_start();
 $table->render();

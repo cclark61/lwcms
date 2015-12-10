@@ -11,7 +11,6 @@
 
 <xsl:import href="page_constructs.xsl"/>
 <xsl:import href="messages.xsl"/>
-<xsl:import href="content.xsl"/>
 
 <xsl:output method="html" encoding="utf-8" indent="yes" />
 
@@ -28,6 +27,11 @@
         </head>
 
         <body>
+
+        	<xsl:attribute name="class">
+        		<xsl:value-of select="concat('OpenCore msg_page lwcms ', /page/application_data/app_code)" />
+        	</xsl:attribute>
+
         	<div class="container">
         		<xsl:call-template name="content"/>
         	</div>
@@ -53,7 +57,7 @@
 		<!--=========================================-->
 		<xsl:if test="message">
 			<xsl:variable name="msg_code">
-				<xsl:value-of select="//page/message/code"/>
+				<xsl:value-of select="/page/message/code"/>
 			</xsl:variable>
 			<xsl:choose>
 				<xsl:when test='contains($msg_code, "login")'>

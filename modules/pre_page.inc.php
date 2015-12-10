@@ -17,13 +17,20 @@
 //=========================================================================
 //=========================================================================
 
-load_plugin("qdba");
-load_plugin("dio");
-load_plugin("content_gen");
+//=============================================================
+// Set OpenCore Include Path
+//=============================================================
+define('OPENCORE_PATH', $_SESSION['OPENCORE_PATH']);
 
+//=============================================================
+// Include OpenCore Pre-Page Include File
+//=============================================================
+include(OPENCORE_PATH . '/modules/pre_page.inc.php');
+
+//=============================================================
 // Check that default Data Source is set in session
+//=============================================================
 if (!isset($_SESSION['lwcms_ds'])) {
 	$_SESSION['system_error'] = 'Default data source is not set! This will prevent you from using this application!';
 }
 
-?>

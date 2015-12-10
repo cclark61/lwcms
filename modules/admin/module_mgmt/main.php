@@ -86,9 +86,9 @@ $table = new rs_list($data_order, $recs);
 $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->identify("", "table table-striped");
-$table->set_col_attr('phrase', 'class', 'hidden-phone', false, true);
-$table->set_col_attr('mod_dir', 'class', 'hidden-phone', false, true);
-$table->set_col_attr('content_dir', 'class', 'hidden-phone', false, true);
+$table->set_col_attr('phrase', 'class', 'hidden-xs', false, true);
+$table->set_col_attr('mod_dir', 'class', 'hidden-xs', false, true);
+$table->set_col_attr('content_dir', 'class', 'hidden-xs', false, true);
 
 ob_start();
 $table->render();

@@ -104,8 +104,8 @@ $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->display_headers(false);
 $table->identify("", "site_list table table-striped");
-$table->set_col_attr('site_url', 'class', 'hidden-phone');
-$table->set_col_attr('site_desc', 'class', 'hidden-phone hidden-tablet');
+$table->set_col_attr('site_url', 'class', 'hidden-xs');
+$table->set_col_attr('site_desc', 'class', 'hidden-xs hidden-sm');
 
 ob_start();
 $table->render();

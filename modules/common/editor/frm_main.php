@@ -43,9 +43,9 @@ if ($this->action == "edit") {
 	$form->add_hidden("file_name", $file_name);
 	$form->add_element(
 		POP_TB::simple_control_group(false, array(
-			div($disp_file_path, array('class' => 'hidden-phone')),
-			div($file_name, array('class' => 'hidden-desktop hidden-tablet'))
-		))
+			div($disp_file_path, array('class' => 'hidden-xs')),
+			div($file_name, array('class' => 'hidden-lg hidden-md hidden-sm'))
+		), 'div', ['class' => 'well well-sm'])
 	);
 
 	//==================================================================
@@ -160,4 +160,3 @@ $form->add_element(POP_TB::save_button());
 //===============================================================
 $form->render();
 
-?>

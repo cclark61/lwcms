@@ -20,9 +20,16 @@
 define('MAIN_CONTROLLER', 1);
 
 //*************************************************************************
-// "Pseudo" Content Devlivery Network
+// Is Redirect URL Set?
 //*************************************************************************
-include('cdn.inc.php');
+if (!isset($_SERVER['REDIRECT_URL'])) {
+	$_SERVER['REDIRECT_URL'] = $_SERVER['REQUEST_URI'];
+}
+
+//*************************************************************************
+// OpenCore "Pseudo" Content Devlivery Network
+//*************************************************************************
+include('phar://' . __DIR__ . '/lib/opencore.phar/cdn.inc.php');
 
 //*************************************************************************
 // Start the session

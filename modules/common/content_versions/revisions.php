@@ -69,7 +69,7 @@ $table = new rs_list($data_order, $recs);
 $table->empty_message("--");
 $table->identify("", "table table-striped");
 $table->label('Revisions');
-$table->set_col_attr("create_user", "class", "hidden-phone", false, true);
+$table->set_col_attr("create_user", "class", "hidden-xs", false, true);
 
 ob_start();
 $table->render();

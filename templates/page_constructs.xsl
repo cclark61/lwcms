@@ -230,7 +230,7 @@
 							</li>
 						</xsl:if>
 						<li>
-							<a>
+							<a tabindex="-1">
 								<xsl:attribute name="href">
 									<xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" />
 								</xsl:attribute>
@@ -342,7 +342,7 @@
 		<div class="container">
 			<p class="credit muted">
 				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
-				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" /> <a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
+				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
 			</p>
 		</div>
 	</div>

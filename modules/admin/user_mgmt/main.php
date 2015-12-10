@@ -98,8 +98,8 @@ $table = new rs_list($data_order, $users);
 $table->empty_message("--");
 if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"); }
 $table->identify("", "table table-striped");
-$table->set_col_attr('admin', 'class', 'hidden-phone', false, true);
-$table->set_col_attr('disabled', 'class', 'hidden-phone', false, true);
+$table->set_col_attr('admin', 'class', 'hidden-xs', false, true);
+$table->set_col_attr('disabled', 'class', 'hidden-xs', false, true);
 
 ob_start();
 $table->render();
