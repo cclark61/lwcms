@@ -28,7 +28,6 @@ include(OPENCORE_PATH . '/modules/pre_message.inc.php');
 if (!empty($_SESSION['site_title'])) { $this->add_xml('site_title', xml_escape($_SESSION['site_title'])); }
 if (!empty($_SESSION['msg_header'])) { $this->add_xml('msg_header', xml_escape($_SESSION['msg_header'])); }
 if (!empty($_SESSION['msg_logo_url'])) { $this->add_xml('msg_logo_url', xml_escape($_SESSION['msg_logo_url'])); }
-if (!empty($_SESSION['msg_footer'])) { $this->add_xml('msg_footer', xml_escape($_SESSION['msg_footer'])); }
 
 //**************************************************************
 // Timezone

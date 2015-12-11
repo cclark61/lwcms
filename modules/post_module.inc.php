@@ -48,7 +48,7 @@ $this->add_xml("lwcms_admin_status", $admin_status);
 //**************************************************************
 if (!empty($_SESSION["site_title"])) { $this->add_xml("site_title", xml_escape($_SESSION["site_title"])); }
 if (!empty($_SESSION["site_header"])) { $this->add_xml("site_header", xml_escape($_SESSION["site_header"])); }
-if (!empty($_SESSION["site_footer"])) { $this->add_xml("site_footer", xml_escape($_SESSION["site_footer"])); }
+if (!empty($_SESSION['site_logo_url'])) { $this->add_xml('site_logo_url', xml_escape($_SESSION['site_logo_url'])); }
 
 //**************************************************************
 // Sites Menu
