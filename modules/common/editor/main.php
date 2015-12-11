@@ -92,7 +92,7 @@ foreach($dir_files as $key => $df) {
 			case "psd":
 			case "bmp":
 				$editable = false;
-				$editable = $image_image;
+				$tmp_image = $image_image;
 				break;
 
 			case '':
