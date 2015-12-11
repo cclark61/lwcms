@@ -73,8 +73,8 @@ if ($node_path) {
 //====================================================================
 // Breadcrumbs
 //====================================================================
-if ($segment_4 != 'cats') {
-	$this->add_xml('current_path', xml_escape_array($curr_path));
+if ($segment_4 == 'cats' || $action == 'folder_options') {
+	$curr_path = [];
 }
 
 //====================================================================
@@ -96,7 +96,7 @@ if ($valid_site) {
 		//------------------------------------------------------
 		case "cats":
 			if ($acc_lvl > 2) {
-				$mod_title = "Folder Categories";
+				$mod_title .= " :: Folder Categories";
 				$mod_base_url2 = $mod_base_url = "{$mod_base_url}cats/";
 				include("entry_cats/controller.php");
 			}

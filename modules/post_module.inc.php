@@ -36,7 +36,7 @@ include(__DIR__ . '/common/load-js.php');
 //**************************************************************
 // Breadcrumbs
 //**************************************************************
-//if (!empty($breadcrumbs)) { $this->add_xml("breadcrumbs", xml_escape_array($breadcrumbs)); }
+if (!empty($breadcrumbs)) { $this->add_xml("breadcrumbs", xml_escape_array($breadcrumbs)); }
 
 //**************************************************************
 // Admin Status

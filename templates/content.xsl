@@ -47,8 +47,17 @@
 		<!-- Current Path Breadcrumbs -->
     	<!--===============================================-->
 		<xsl:call-template name="breadcrumbs">
+			<xsl:with-param name="base" select="/page/application_data/breadcrumbs" />
+			<xsl:with-param name="id" select="'breadcrumbs'" />
+			<xsl:with-param name="separator" select="''" />
+		</xsl:call-template>
+
+    	<!--===============================================-->
+		<!-- Current Path Breadcrumbs -->
+    	<!--===============================================-->
+		<xsl:call-template name="breadcrumbs">
 			<xsl:with-param name="base" select="/page/application_data/current_path" />
-			<xsl:with-param name="id" select="'current_path_breadcrumbs'" />
+			<xsl:with-param name="id" select="'current_path'" />
 			<xsl:with-param name="separator" select="''" />
 		</xsl:call-template>
 

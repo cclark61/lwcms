@@ -49,7 +49,6 @@ if ($disp_curr_dir) {
 		}
 	}
 }
-$this->add_xml('current_path', xml_escape_array($curr_path));
 
 //===============================================================
 // Pull File Listing for Current Directory

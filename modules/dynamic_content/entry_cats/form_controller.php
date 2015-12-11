@@ -40,6 +40,11 @@ if ($pull_from_db) {
 if (isset($next_action[$action])) {
 
 	//------------------------------------------
+	// Add Breadcrumb
+	//------------------------------------------
+	$breadcrumbs[] = anchor($mod_base_url, 'Folder Categories');
+
+	//------------------------------------------
 	// Back Link
 	//------------------------------------------
 	$back_link = $mod_base_url;
