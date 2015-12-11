@@ -166,6 +166,5 @@ $redirect_url = $mod_base_url;
 if (!empty($change_id)) {
 	$redirect_url = add_url_params($redirect_url, array('change_id' => $change_id));
 }
-header("Location: {$redirect_url}");
-exit;
+redirect($redirect_url);
 

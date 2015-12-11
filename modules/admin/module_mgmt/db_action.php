@@ -26,15 +26,13 @@ if ($action == "delete") {
 
 	if (!$module) {
 		add_warn_message('The module could not be uninstalled because it does not exist.');
-		header("Location: {$mod_base_url}");
-		exit;
+		redirect($mod_base_url);
 		return false;
 	}
 	extract($module);
 	if (in_array($phrase, $system_modules)) {
 		add_warn_message('System modules cannot be uninstalled.');
-		header("Location: {$mod_base_url}");
-		exit;
+		redirect($mod_base_url);
 		return false;	
 	}
 
@@ -108,6 +106,5 @@ $redirect_url = $mod_base_url;
 if (!empty($change_id)) {
 	$redirect_url = add_url_params($redirect_url, array('change_id' => $change_id));
 }
-header("Location: {$redirect_url}");
-exit;
+redirect($redirect_url);
 

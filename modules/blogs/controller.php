@@ -91,7 +91,6 @@ if (!empty($valid_site)) {
 	}
 }
 else {
-	header("Location: {$this->html_path}/");
-	exit;
+	redirect($this->html_path . '/');
 }
 

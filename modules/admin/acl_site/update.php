@@ -64,6 +64,5 @@ if ($do_trans) {
 // Redirect
 //==================================================================
 $redirect_url = $mod_base_url;
-header("Location: {$redirect_url}");
-exit;
+redirect($redirect_url);
 

@@ -58,7 +58,6 @@ if ($valid_blog && $site_id) {
 }
 else {
 	$this->action = "invalid_blog";
-	header("Location: {$page_url}");
-	exit;
+	redirect($page_url);
 }
 

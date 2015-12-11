@@ -92,6 +92,5 @@ else if ($do_trans && !$ssv_status) {
 // Everything else, Redirect
 //==================================================================
 $redirect_url = $mod_base_url;
-header("Location: {$redirect_url}");
-exit;
+redirect($redirect_url);
 

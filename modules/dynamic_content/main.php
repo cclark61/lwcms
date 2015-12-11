@@ -58,8 +58,7 @@ if ($parent != 0) {
 	";
 	$count = qdb_lookup('', $strsql, 'count', array('ii', $valid_site, $parent)); // Ok
 	if (!$count) {
-		header("Location: {$mod_home_redir_url}");
-		exit;
+		redirect($mod_home_redir_url);
 	}
 }
 

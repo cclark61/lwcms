@@ -24,16 +24,14 @@ if ($pull_from_db) {
 	$load_status = $obj->load($id);
 	if (!$load_status && $action != 'add') {
 		add_warn_message('Invalid Module.');
-		header("Location: {$mod_base_url}");
-		exit;
+		redirect($mod_base_url);
 		return false;	
 	}
 	extract($obj->export());
 
 	if (in_array($phrase, $system_modules)) {
 		add_warn_message('System modules cannot be uninstalled.');
-		header("Location: {$mod_base_url}");
-		exit;
+		redirect($mod_base_url);
 		return false;	
 	}
 }
@@ -73,7 +71,6 @@ if (isset($next_action[$action])) {
     }
 }
 else {
-	header("Location: {$mod_base_url}");
-	exit;
+	redirect($mod_base_url);
 }
 

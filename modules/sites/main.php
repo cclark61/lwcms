@@ -34,8 +34,7 @@ $sites = LWCMS::get_site_list();
 // Only One Site?
 //========================================================================
 if (count($sites) == 1 && !ADMIN_STATUS) {
-	header("Location: {$this->html_path}/{$sites[0]['id']}/");
-	exit;
+	redirect("{$this->html_path}/{$sites[0]['id']}/");
 }
 else if (!$sites) {
 	add_gen_message('There are no sites available to you at this time.');

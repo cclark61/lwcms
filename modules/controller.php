@@ -141,13 +141,11 @@ switch ($segment_1) {
 						include($mod_controller);
 					}
 					else {
-						header("Location: {$site_view_url}");
-						exit;
+						redirect($site_view_url);
 					}
 				}
 				else {
-					header("Location: {$site_view_url}");
-					exit;
+					redirect($site_view_url);
 				}
 			}
 			else {

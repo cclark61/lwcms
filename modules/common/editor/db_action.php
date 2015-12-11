@@ -16,8 +16,7 @@
 //===============================================================
 if (!isset($disp_file_path)) {
 	add_error_message("An error has occurred. Please try again.");
-	header("Location: {$mod_base_url}");
-	exit;
+	redirect($mod_base_url);
 }
 
 //===============================================================
@@ -225,6 +224,5 @@ $redirect_url = $mod_base_url;
 if (!empty($disp_curr_dir)) {
 	$redirect_url = "{$redirect_url}/{$disp_curr_dir}";
 }
-header("Location: {$redirect_url}");
-exit;
+redirect($redirect_url);
 
