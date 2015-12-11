@@ -16,7 +16,12 @@
 //=================================================================
 $top_mod_links = array();
 $tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
-$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Install or Upgrade a Module", "image" => xml_escape($add_image));
+$top_mod_links["links"][] = array(
+	"link" => $tmp_link, 
+	"desc" => "Install or Upgrade a Module", 
+	"image" => xml_escape($add_image),
+	'class' => 'btn btn-success'
+);
 
 //=================================================================
 // Module List from Database
@@ -52,7 +57,7 @@ foreach ($recs as &$rec) {
 		$rec['version'] = $_SESSION['version'];
 	}
 	else {
-		$rec["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$rec["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//-----------------------------------------------

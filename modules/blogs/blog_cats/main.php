@@ -55,7 +55,7 @@ foreach ($cats as $key => &$cat) {
 		$cat["actions"] = '--';
 	}
 	else {
-		$cat["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$cat["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//-----------------------------------------------------

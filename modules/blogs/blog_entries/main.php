@@ -60,18 +60,18 @@ foreach ($entries as $key => &$entry) {
 	$edit_link = add_url_params($mod_base_url, array("action" => "edit", "id" => $id));
 	$delete_link = add_url_params($mod_base_url, array("action" => "confirm_delete", "id" => $id));
 	$revisions_link = add_url_params($mod_base_url, array("action" => "revisions", "id" => $id));
-	//$entry["edit"] = anchor($edit_link, $edit_image, array('class' => 'btn'));
+	//$entry["edit"] = anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
 	$view_version_link = add_url_params($mod_base_url, array("action" => "view_version", "id" => $id, "version" => 'latest'));
 	$tmp_attrs = array(
 		'content_link' => $view_version_link, 
-		'class' => 'btn view_version', 
+		'class' => 'btn btn-primary view_version', 
 		'data-toggle' => 'modal', 
 		'data-target' => "#revision_modal"
 	);
 
-	$entry["actions"] = anchor($revisions_link, $revisions_image, array('class' => 'btn'));
+	$entry["actions"] = anchor($revisions_link, $revisions_image, array('class' => 'btn btn-primary'));
 	$entry["actions"] .= xhe('a', $view_image, $tmp_attrs);
-	$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn'));
+	$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 
 	//---------------------------------------------
 	// Dates

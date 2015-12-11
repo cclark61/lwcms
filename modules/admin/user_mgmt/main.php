@@ -16,7 +16,12 @@
 //==================================================================
 $top_mod_links = array();
 $tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
-$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add a User", "image" => xml_escape($add_image));
+$top_mod_links["links"][] = array(
+	"link" => $tmp_link, 
+	"desc" => "Add a User", 
+	"image" => xml_escape($add_image),
+	'class' => 'btn btn-success'
+);
 
 //==================================================================
 // Pull a list of users
@@ -50,7 +55,7 @@ foreach ($users as $key => &$user) {
 		$user["actions"] = "--";
 	}
 	else {
-		$user["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$user["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 	
 	//**************************************************************************
@@ -74,7 +79,7 @@ foreach ($users as $key => &$user) {
 		$user["disabled"] = span("No", array('class' => 'label label-default'));
 	}
 	else {
-		$user["disabled"] = span("Yes", array('class' => 'label label-danger'));
+		$user["disabled"] = span("Yes", array('class' => 'label label-success'));
 	}
 
 	//**************************************************************************

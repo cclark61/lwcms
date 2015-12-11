@@ -34,7 +34,7 @@ foreach ($recs as $key => &$rec) {
 	$view_version_link = add_url_params($mod_base_url, array("action" => "view_version", "id" => $id, "version" => $rec['id']));
 	$tmp_attrs = array(
 		'content_link' => $view_version_link, 
-		'class' => 'btn view_version', 
+		'class' => 'btn btn-primary view_version', 
 		'data-toggle' => 'modal', 
 		'data-target' => "#revision_modal"
 	);

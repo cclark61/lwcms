@@ -61,11 +61,11 @@ foreach ($blogs as $key => &$blog) {
 	//----------------------------------------------
 	// Actions
 	//----------------------------------------------
-	$blog["actions"] = anchor($entries_link, $content_image, array('class' => 'btn'));
+	$blog["actions"] = anchor($entries_link, $content_image, array('class' => 'btn btn-primary'));
 	if ($acc_lvl > 2) {
-		$blog["actions"] .= anchor($cats_link, $cat_image, array('class' => 'btn'));
-		$blog["actions"] .= anchor($edit_link, $edit_image, array('class' => 'btn'));
-		$blog["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$blog["actions"] .= anchor($cats_link, $cat_image, array('class' => 'btn btn-info'));
+		$blog["actions"] .= anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
+		$blog["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//----------------------------------------------
