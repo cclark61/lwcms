@@ -133,10 +133,10 @@
 			</button>
 			<a href="/" class="navbar-brand">
 				<xsl:choose>
-					<xsl:when test="/page/application_data/site_logo_icon">
+					<xsl:when test="/page/application_data/site_logo_url">
 						<img class="gen_icon3">
 							<xsl:attribute name="src">
-								<xsl:value-of select="/page/application_data/site_logo_icon" disable-output-escaping="yes" />
+								<xsl:value-of select="/page/application_data/site_logo_url" disable-output-escaping="yes" />
 							</xsl:attribute>
 						</img>
 					</xsl:when>
