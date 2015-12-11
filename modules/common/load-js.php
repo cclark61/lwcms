@@ -16,7 +16,13 @@
 //**************************************************************
 if (!empty($load_tinymce)) {
 	$this->add_js_file("/bower_components/tinymce/tinymce.min.js");
-	$this->add_js_file("content_edit.js");
+	$mm_path = $this->file_path . '/bower_components/tinymce/plugins/moxiemanager';
+	if (is_dir($mm_path)) {
+		$this->add_js_file("content_edit.js");
+	}
+	else {
+		$this->add_js_file("content_edit2.js");
+	}
 }
 
 //**************************************************************
