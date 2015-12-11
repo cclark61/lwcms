@@ -14,37 +14,39 @@
 //--------------------------------------------------------
 // Include Local Variables
 //--------------------------------------------------------
-if (file_exists('local.var.php')) { include('local.var.php'); }
-
-//--------------------------------------------------------
-// Set Page Type
-//--------------------------------------------------------
-$this->page_type = 'page_text';
+include('local.var.php');
 
 //--------------------------------------------------------
 // Flow Control
 //--------------------------------------------------------
-if (trim($segment_2)) {
-	$controller = __DIR__ . "/{$segment_2}/controller.php";
-	if (file_exists($controller)) {
-		ob_start();
-		include($controller);
-		$return_content = trim(ob_get_clean());
-		if ($return_content == '') {
-			print '0:EMPTY';
-			return false;
+switch ($this->action) {
+	case "add":
+	case "edit":
+	case "confirm_delete":
+		if ($acc_lvl < 2 && ($this->action == "add" || $this->action == "confirm_delete")) {
+			add_warn_message($access_deny_msg);
+    		include("main.php");
 		}
+		else {
+			$pull_from_db = true;
+    		include("form_controller.php");
+    	}
+    	break;
 
-		print $return_content;
-		return true;
-	}
-	else {
-		print '0:NOT FOUND';
-		return false;
-	}
-}
-else {
-	print '0:INVALID';
-	return false;
+	case "insert":
+	case "update":
+	case "delete":
+		if ($acc_lvl < 2 && ($this->action == "insert" || $this->action == "delete")) {
+			add_warn_message($access_deny_msg);
+    		include("main.php");
+		}
+		else {
+    		include("db_action.php");
+    	}
+    	break;
+
+	default:
+		include("main.php");
+		break;
 }
 

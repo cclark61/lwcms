@@ -12,10 +12,9 @@
 //***************************************************************************
 
 //==================================================================
-// Local Functions
+// Local Variables / Settings
 //==================================================================
 include('local.var.php');
-include('local.func.php');
 
 //==================================================================
 // Check for Valid Site ID in URL
@@ -56,7 +55,7 @@ switch ($this->action) {
 		//------------------------------------------------------------
 		// Site Modules (stored in session)
 		//------------------------------------------------------------
-		$_SESSION["app_modules"] = get_app_modules("phrase");
+		$_SESSION["app_modules"] = AppModules::get("phrase");
 		include("main.php");
 		break;
 }

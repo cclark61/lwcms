@@ -31,45 +31,35 @@ if ($do_trans && $ssv_status) {
 	// Create new object
 	//---------------------------------------------------
 	if (!isset($id)) { $id = ""; }
-	$s = new site();
-	$s->import();
-	$s->no_save("id");
-	//$s->print_only();
+	$obj = new testimonial();
+	$obj->import();
+	$obj->no_save("id");
+	//$obj->print_only();
 
 	//---------------------------------------------------
 	// Flow Control
 	//---------------------------------------------------
 	switch ($action) {
 	    case "insert":
-	        $change_id = $s->save();
-	        Sites::update_asms($change_id);
-	        add_action_message("The site has been successfully saved.");
+	    	$obj->set_field_data('site_id', $valid_site);
+	        $change_id = $obj->save();
+	        add_action_message("The testimonial has been successfully saved.");
 	        break;
 
 	    case "update":
-	        $s->save($id);
+	    	$obj->no_save('site_id');
+	        $obj->save($id);
 	        $change_id = $id;
-	        Sites::update_asms($change_id);
-	        add_action_message("The site has been successfully saved.");
+	        add_action_message("The testimonial has been successfully saved.");
 	        break;
 
 	    case "delete":
 	    	if (isset($button_1) && $button_1 == "Delete") {
-        		$s->delete($id);
-        		$tables = qdb_list('', "show tables"); // Ok
-        		$table_index = "Tables_in_" . $_SESSION[$_SESSION["lwcms_ds"]]["source"];
-        		foreach ($tables as $table) {
-        			$table_name = $table[$table_index];
-        			$strsql = "show columns from {$table_name} where Field = 'site_id'";
-        			$fields = qdb_list('', $strsql); // Ok
-        			if (count($fields) > 0) {
-        				qdb_exec('', "delete from {$table_name} where site_id = ?", array('i', $id));
-        			}
-        		}
-        		add_action_message("The site has been successfully deleted.");
+        		$obj->delete($id);
+        		add_action_message("The testimonial has been successfully deleted.");
         	}
         	else {
-        		add_warn_message("The site was not deleted.");
+        		add_warn_message("The testimonial was not deleted.");
         	}
         	break;
 	}
@@ -78,7 +68,7 @@ if ($do_trans && $ssv_status) {
 // Failed Validation
 //==================================================================
 else if (!$ssv_status) {
-	$action = ($this->action == "insert") ? ("add") : ("edit");
+	$action = ($action == "insert") ? ("add") : ("edit");
 	$this->action = $action;
 	$ssv->display_fail_messages();
 	$pull_from_db = false;
@@ -94,3 +84,4 @@ if (!empty($change_id)) {
 	$redirect_url = add_url_params($redirect_url, array('change_id' => $change_id));
 }
 redirect($redirect_url);
+

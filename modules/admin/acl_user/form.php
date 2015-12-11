@@ -34,7 +34,7 @@ format_records($sites, array(
 //=================================================================
 // Installed Site Modules
 //=================================================================
-$app_modules = get_app_modules();
+$app_modules = AppModules::get();
 
 //=================================================================
 // Site Access for this user

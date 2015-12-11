@@ -25,7 +25,7 @@ if ($do_trans) {
 	//-------------------------------------------------------
 	// Pull a list of all installed Site Modules
 	//-------------------------------------------------------
-	$app_modules = get_app_modules();
+	$app_modules = AppModules::get();
 	
 	//-------------------------------------------------------
 	// Pull User Info

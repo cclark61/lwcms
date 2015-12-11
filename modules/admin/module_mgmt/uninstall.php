@@ -12,11 +12,6 @@
 //***************************************************************************
 
 //==================================================================
-// Local Functions
-//==================================================================
-include('local.func.php');
-
-//==================================================================
 // Check if module is installed
 //==================================================================
 $strsql = "select * from app_modules where id = ?";
@@ -40,7 +35,7 @@ if ($module) {
 	//********************************************************
 	// Check Uninstall Directories
 	//********************************************************
-	if (check_uninstall_dirs($phrase)) {
+	if (ModuleMgmt::check_uninstall_dirs($phrase)) {
 		add_warn_message("Unable to uninstall module components.");
 		return false;
 	}
