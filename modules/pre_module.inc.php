@@ -66,7 +66,7 @@ $del_file_image = $delete_image;
 $add_folder_image = $add_image;
 $del_folder_image = $delete_image;
 $upload_file_image = css_icon('fa fa-upload');
-$image_image = css_icon('fa fa-image-o');
+$image_image = css_icon('fa fa-picture-o');
 $publish_image = css_icon('fa fa-upload');
 
 //**********************************************************
