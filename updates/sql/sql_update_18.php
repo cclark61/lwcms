@@ -29,4 +29,3 @@ if (!lwcms_db_table_exists('content_versions')) {
 	";
 }
 
-?>

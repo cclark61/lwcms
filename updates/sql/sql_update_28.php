@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'entry_author')) {
 	$sql_updates[28] = "ALTER TABLE `site_entries` ADD `entry_author` SMALLINT NOT NULL DEFAULT '0' AFTER `post_date` ";
 }
 
-?>

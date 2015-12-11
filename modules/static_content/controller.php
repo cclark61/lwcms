@@ -14,5 +14,6 @@
 $base_dir = $content_dir;
 $base_display = 'CONTENT_DIRECTORY';
 $root_folder_name = 'static content directory';
-include(__DIR__ . '/../common/editor/controller.php');
+include('local.var.php');
+include(APP_COMMON_DIR . '/editor/controller.php');
 

@@ -30,4 +30,3 @@ if (!lwcms_db_table_exists('site_entry_cats')) {
 	";
 }
 
-?>

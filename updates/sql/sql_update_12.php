@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('sites', 'cache_dynamic_content')) {
 	$sql_updates[12] = "ALTER TABLE `sites` ADD `cache_dynamic_content` TINYINT NOT NULL DEFAULT '1'";
 }
 
-?>

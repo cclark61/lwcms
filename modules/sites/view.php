@@ -48,7 +48,7 @@ ob_start();
 foreach ($active_modules as $key => $amod) {
 	extract($amod);
 	if ($admin_status > 0 || isset($lwcms_user_access[$phrase])) {
-		$tmp_image = image("{$this->html_path}/{$image}", '[&raquo;]', array('title' => $mod_desc, 'class' => 'gen_icon2'));
+		$tmp_image = css_icon($image);
 		$mod_url = "{$mod_base_url}{$site_id}/{$phrase}/";
 		print li(anchor($mod_url, $tmp_image . html_escape($mod_desc)));
 		$ttl_mods++;
@@ -57,7 +57,6 @@ foreach ($active_modules as $key => $amod) {
 
 $site_nav = ob_get_clean();
 if ($ttl_mods > 0) {
-	print ul($site_nav, array('class' => 'site_nav nav nav-tabs nav-stacked'));
+	print ul($site_nav, array('class' => 'site_nav sub-modules-nav nav nav-pills nav-stacked'));
 }
 
-?>

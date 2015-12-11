@@ -16,7 +16,12 @@
 //==================================================================
 $top_mod_links = array();
 $tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
-$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add a folder category", "image" => xml_escape($add_image));
+$top_mod_links["links"][] = array(
+	"link" => $tmp_link, 
+	"desc" => "Add a folder category", 
+	"image" => xml_escape($add_image),
+	'class' => 'btn btn-success'
+);
 
 //==================================================================
 // Pull a list
@@ -55,7 +60,7 @@ foreach ($cats as $key => &$cat) {
 		$cat["actions"] = '--';
 	}
 	else {
-		$cat["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$cat["actions"] = anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//---------------------------------------------
@@ -93,4 +98,3 @@ if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"
 $table->identify("", "cats_list table table-striped");
 $table->render();
 
-?>

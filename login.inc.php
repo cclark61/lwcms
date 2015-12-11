@@ -55,6 +55,7 @@ set_plugin_folder(dirname(__FILE__) . '/vendor/cclark61/phpOpenPlugins');
 //**************************************************************************
 $strsql = "select * from users where userid = ?";
 $cui = qdb_first_row('', $strsql, array('s', $_SESSION['userid']));
+$_SESSION['user_full_name'] = $cui['first_name'] . ' ' . $cui['last_name'];
 $_SESSION['lwcms_admin_status'] = (isset($cui['admin'])) ? ($cui['admin']) : (0);
 $_SESSION['lwcms_super_admin_status'] = (isset($cui['super_admin'])) ? ($cui['super_admin']) : (0);
 $_SESSION['super_admin'] = $_SESSION['lwcms_super_admin_status'];

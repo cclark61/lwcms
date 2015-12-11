@@ -91,4 +91,3 @@ if (!empty($change_id)) {
 header("Location: {$redirect_url}");
 exit;
 
-?>

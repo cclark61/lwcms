@@ -19,4 +19,3 @@ $sql_updates[0] = "
 	SET `mod_desc` = 'Content (Dynamic)', `phrase` = 'dynamic_content', mod_dir = 'dynamic_content', content_dir = 'dynamic_content' 
 	WHERE `app_modules`.`phrase` = 'content' LIMIT 1 ;";
 	
-?>

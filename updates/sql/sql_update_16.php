@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'url_tag')) {
 	$sql_updates[16] = "ALTER TABLE `site_entries` ADD `url_tag` VARCHAR( 30 ) NULL";
 } 
 
-?>

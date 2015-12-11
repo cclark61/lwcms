@@ -188,8 +188,6 @@ if ($valid_site) {
 	}
 }
 else {
-	header("Location: {$page_url}");
-	exit;	
+	redirect($page_url);
 }
 
-?>

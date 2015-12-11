@@ -228,4 +228,3 @@ if (!empty($disp_curr_dir)) {
 header("Location: {$redirect_url}");
 exit;
 
-?>

@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[6] = "ALTER TABLE `site_blog_authors` ADD `blog_id` INT NOT NULL DEFAULT '0' AFTER `site_id` ";
 
-?>

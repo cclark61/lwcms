@@ -15,4 +15,3 @@ $ssv = new server_side_validation();
 $ssv->add_check("category", "is_not_empty", "You must enter a category.");
 $ssv_status = $ssv->validate();
 
-?>

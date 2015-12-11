@@ -11,7 +11,8 @@
 **/
 //***************************************************************************
 
-$mod_title = "User Management";
-$mod_image = image("{$icon_base_dir}/group_gear.png", "[&raquo;]", array("title" => "User Management", "class" => "gen_icon"));
+if ($_SESSION["userid"] == "admin" || SUPER_ADMIN) {
+	$mod_title = "Set Administrative Users";
+	$mod_icon_class = 'fa fa-user';
+}
 
-?>

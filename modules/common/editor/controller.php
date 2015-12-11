@@ -71,4 +71,3 @@ switch ($this->action) {
 		break;
 }
 
-?>

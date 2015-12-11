@@ -112,4 +112,3 @@ else {
 	add_gen_message('There are currently no users to configure for this site.');
 }
 
-?>

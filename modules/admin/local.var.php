@@ -12,6 +12,13 @@
 //***************************************************************************
 
 //=================================================================
+// Module Settings
+//=================================================================
+$mod_title = "Administration";
+//$mod_title = "Admin Control Panel";
+$mod_icon_class = 'fa fa-gears';
+
+//=================================================================
 // Get Modules Arguments
 //=================================================================
 $get_mods_args = array(
@@ -20,36 +27,3 @@ $get_mods_args = array(
 	'mod_base_url2' => $mod_base_url2,
 );
 
-//=================================================================
-//=================================================================
-// Get Admin Modules Function
-//=================================================================
-//=================================================================
-function get_admin_modules($args)
-{
-	extract($args);
-	$icon_base_dir = ICON_BASE_DIR;
-	$dirs = array();
-	$list = scandir(dirname(__FILE__));
-	foreach ($list as $item) {
-		$full_dir = dirname(__FILE__) . '/' . $item;
-		$dir_mod_info = "{$full_dir}/mod_info.php";
-		if ($item == '.' || $item == '..' || !is_dir($full_dir) || !file_exists($dir_mod_info)) {
-			continue;
-		}
-		unset($mod_title);
-		unset($mod_image);
-		include($dir_mod_info);
-
-		if (isset($mod_title) && isset($mod_image)) {
-			$dirs[$item] = array(
-				'mod_title' => $mod_title,
-				'mod_image' => $mod_image
-			);
-		}
-	}
-
-	return $dirs;
-}
-
-?>

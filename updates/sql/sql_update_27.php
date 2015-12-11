@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_blog_entries', 'stage')) {
 	$sql_updates[27] = "ALTER TABLE `site_blog_entries` ADD `stage` TINYINT NOT NULL DEFAULT '2'";
 }
 
-?>

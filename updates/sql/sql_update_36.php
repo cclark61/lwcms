@@ -17,4 +17,4 @@
 //**************************************************************************** 
 $sql_updates[36] = "DELETE FROM app_modules WHERE phrase = 'site_navs' LIMIT 1;";
 
-?>
+

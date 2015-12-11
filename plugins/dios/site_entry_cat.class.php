@@ -24,4 +24,3 @@ class site_entry_cat extends database_interface_object
 	}
 }
 
-?>

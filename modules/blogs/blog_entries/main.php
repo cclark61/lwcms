@@ -16,7 +16,12 @@
 //==================================================================
 $top_mod_links = array();
 $tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
-$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add a blog entry", "image" => xml_escape($add_image));
+$top_mod_links["links"][] = array(
+	"link" => $tmp_link, 
+	"desc" => "Add a blog entry", 
+	"image" => xml_escape($add_image),
+	'class' => 'btn btn-success'
+);
 
 //==================================================================
 // Pull a list of categories
@@ -78,7 +83,7 @@ foreach ($entries as $key => &$entry) {
 	// Active Status
 	//----------------------------------------------
 	$status_msg = ($active) ? ("Yes") : ("No");
-	$status_class = ($active) ? ("label label-success") : ("label");
+	$status_class = ($active) ? ("label label-success") : ("label label-default");
 	$entry["active"] = span($status_msg, array("class" => $status_class));
 
 	//---------------------------------------------
@@ -95,7 +100,7 @@ foreach ($entries as $key => &$entry) {
 	// Publish Status
 	//---------------------------------------------------------
 	$disp_pub_status = ($version_live) ? ('Yes') : ('No');
-	$pub_status_class = ($version_live) ? ('label label-success') : ('label');
+	$pub_status_class = ($version_live) ? ('label label-success') : ('label label-default');
 	$entry["publish_status"] = span($disp_pub_status, array('class' => $pub_status_class));
 
 	//---------------------------------------------

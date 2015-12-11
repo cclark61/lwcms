@@ -17,4 +17,3 @@
 //****************************************************************************
 $sql_updates[23] = "ALTER TABLE `content_versions` CHANGE `raw_content` `raw_content` MEDIUMTEXT NULL DEFAULT NULL";
 
-?>

@@ -24,4 +24,3 @@ class site extends database_interface_object
 	}
 }
 
-?>

@@ -45,4 +45,3 @@ foreach ($folder_opt_fields as $field => $desc) {
 //==================================================================
 $form->end_fieldset();
 
-?>

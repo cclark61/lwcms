@@ -28,13 +28,7 @@ if ($admin_status > 0) {
 //========================================================================
 // Pull a list of sites for this user
 //========================================================================
-if ($admin_status > 0) {
-	$strsql = 'select * from sites order by site_name';
-	$sites = qdb_list('', $strsql); // Ok
-}
-else {
-	$sites = lwcms_get_site_access();
-}
+$sites = LWCMS::get_site_list();
 
 //========================================================================
 // Only One Site?
@@ -70,7 +64,8 @@ foreach ($sites as $key => &$site) {
 	$edit_link = add_url_params($mod_base_url, array("action" => "edit", "id" => $id));
 	$view_link = "{$mod_base_url}{$id}/";
 	$delete_link = add_url_params($mod_base_url, array("action" => "confirm_delete", "id" => $id));
-	$site["actions"] = anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
+	$site["actions"] = anchor($view_link, $open_folder_image, array('class' => 'btn btn-primary'));
+	$site["actions"] .= anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
 	$site["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger site_delete'));
 	if ($site_url != '') {
 		$site["site_url"] = anchor($site_url, $site_url, array('target' => '_blank'));

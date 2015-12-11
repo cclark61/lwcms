@@ -19,4 +19,3 @@ if (lwcms_db_table_exists('site_events')) {
 	$sql_updates[35] = "DROP TABLE site_events";
 }
 
-?>

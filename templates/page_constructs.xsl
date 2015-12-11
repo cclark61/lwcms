@@ -162,6 +162,23 @@
 		<div class="navbar-collapse collapse">
 
 			<!--*******************************************-->
+			<!-- Sites Menu -->
+			<!--*******************************************-->
+			<ul class="nav navbar-nav home_nav">
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="site_menu" href="#">
+						<i class="fa fa-globe"></i>Sites<b class="caret"></b>
+					</a>
+					<ul aria-labelledby="site_menu" role="menu" class="dropdown-menu">
+						<li>
+							<a href="/" tabindex="-1"><i class="fa fa-home"></i>Home</a>
+						</li>
+						<xsl:value-of select="/page/application_data/site_menu" disable-output-escaping="yes" />
+					</ul>
+				</li>
+			</ul>
+
+			<!--*******************************************-->
 			<!-- Main Menu -->
 			<!--*******************************************-->
 			<xsl:if test="string-length(/page/application_data/main_menu) > 0">
@@ -228,7 +245,7 @@
 								<xsl:if test="//page/application_data/segment_1 = 'admin'">
 						    		<xsl:attribute name="class">active</xsl:attribute>
 					    		</xsl:if>
-								<a href="/admin/" tabindex="-1"><i class="fa fa-lock"></i>Admin</a>
+								<a href="/admin/" tabindex="-1"><i class="fa fa-gears"></i>Administration</a>
 							</li>
 						</xsl:if>
 						<li>

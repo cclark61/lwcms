@@ -17,5 +17,3 @@
 $strsql = "select distinct(cat_id) from site_blog_entries where site_id = ?";
 $used_blog_cats = qdb_exec('', $strsql, array('i', $site_id), 'cat_id:cat_id');
 
-
-?>

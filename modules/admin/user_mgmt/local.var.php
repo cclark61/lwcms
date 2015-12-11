@@ -11,7 +11,6 @@
 **/
 //***************************************************************************
 
-//$mod_title = "Application Settings";
-//$mod_image = image("{$icon_base_dir}/text_list_bullets.png", "[&raquo;]", array("title" => "Application Settings", "class" => "gen_icon"));
+$mod_title = "User Management";
+$mod_icon_class = 'fa fa-user';
 
-?>

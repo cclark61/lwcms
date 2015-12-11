@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[38] = "DELETE FROM app_modules WHERE phrase = 'news' LIMIT 1;";
 
-?>

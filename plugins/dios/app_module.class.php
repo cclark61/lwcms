@@ -23,4 +23,3 @@ class app_module extends database_interface_object
 	}
 }
 
-?>

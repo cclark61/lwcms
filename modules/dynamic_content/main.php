@@ -12,28 +12,39 @@
 //***************************************************************************
 
 //*******************************************************************
-// Images
-//*******************************************************************
-$add_file_image = image("$icon_base_dir/page_white_add.png", "[+]", array("title" => "Add", "class" => "gen_icon"));
-$add_folder_image = image("$icon_base_dir/folder_add.png", "[+]", array("title" => "Add", "class" => "gen_icon"));
-$open_folder_image = image("$icon_base_dir/folder_go.png", "Open", array("title" => "Open Folder"));
-$cdup_image = image("$icon_base_dir/arrow_left.png", "[<]", array("title" => "Parent Directory", "class" => "gen_icon"));
-$publish_image = image("$icon_base_dir/page_go.png", "[&raquo]", array("title" => "publish", "class" => "gen_icon"));
-
-//*******************************************************************
 // Top Module Links
 //*******************************************************************
 if ($acc_lvl > 1) {
 	$top_mod_links = array();
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "add_folder"), true);
-	$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add a folder", "image" => xml_escape($add_folder_image));
+	$top_mod_links["links"][] = array(
+		"link" => $tmp_link, 
+		"desc" => "Add a folder", 
+		"image" => xml_escape($add_folder_image),
+		'class' => 'btn btn-success'
+	);
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "add_entry"), true);
-	$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add an entry", "image" => xml_escape($add_file_image));
+	$top_mod_links["links"][] = array(
+		"link" => $tmp_link, 
+		"desc" => "Add an entry", 
+		"image" => xml_escape($add_file_image),
+		'class' => 'btn btn-success'
+	);
 	if ($acc_lvl > 2) {
 		$tmp_link = "{$mod_base_url2}cats/";
-		$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Categories", "image" => xml_escape($cat_image));
-		$fo_link = add_url_params($mod_base_url, array("action" => "folder_options", "id" => $parent));
-		$top_mod_links["links"][] = array("link" => $fo_link, "desc" => "Folder Options", "image" => xml_escape($cat_image));
+		$top_mod_links["links"][] = array(
+			"link" => $tmp_link, 
+			"desc" => "Categories", 
+			"image" => xml_escape($cat_image),
+			'class' => 'btn btn-info'
+		);
+		$fo_link = add_url_params($mod_base_url, array("action" => "folder_options", "id" => $parent), true);
+		$top_mod_links["links"][] = array(
+			"link" => $fo_link, 
+			"desc" => "Folder Options", 
+			"image" => xml_escape($cat_image),
+			'class' => 'btn btn-info'
+		);
 	}
 }
 
@@ -90,9 +101,9 @@ foreach ($entries as $key => &$entry) {
 	//----------------------------------------------
 	// Actions
 	//----------------------------------------------
-	$entry["actions"] = anchor($edit_link, $edit_image, array('class' => 'btn'));
+	$entry["actions"] = anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
 	if ($acc_lvl > 1) {
-		$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//----------------------------------------------
@@ -132,7 +143,10 @@ $table->identify("", "table table-striped");
 $table->label('Folders');
 $table->set_col_attr("entry_type", "class", "icon_col");
 $table->set_col_attr("url_tag", "class", "hidden-xs", false, true);
+
+ob_start();
 $table->render();
+print div(ob_get_clean(), ['class' => 'table-responsive']);
 
 //*******************************************************************
 //*******************************************************************
@@ -188,7 +202,7 @@ foreach ($entries as $key => &$entry) {
 	$view_version_link = add_url_params($mod_base_url, array("action" => "view_version", "id" => $id, "version" => 'latest'));
 	$tmp_attrs = array(
 		'content_link' => $view_version_link, 
-		'class' => 'btn view_version', 
+		'class' => 'btn btn-primary view_version', 
 		'data-toggle' => 'modal', 
 		'data-target' => "#revision_modal"
 	);
@@ -196,10 +210,10 @@ foreach ($entries as $key => &$entry) {
 	//---------------------------------------------------------
 	// Actions
 	//---------------------------------------------------------
-	$entry["actions"] = anchor($revisions_link, $revisions_image, array('class' => 'btn'));
+	$entry["actions"] = anchor($revisions_link, $revisions_image, array('class' => 'btn btn-primary'));
 	$entry["actions"] .= xhe('a', $view_image, $tmp_attrs);
 	if ($acc_lvl > 1) {
-		$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn'));
+		$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}
 
 	//----------------------------------------------
@@ -243,14 +257,14 @@ foreach ($entries as $key => &$entry) {
 	// Active Status
 	//---------------------------------------------------------
 	$status_msg = ($active) ? ("Yes") : ("No");
-	$status_class = ($active) ? ("label label-success") : ("label");
+	$status_class = ($active) ? ("label label-success") : ("label label-default");
 	$entry["active"] = span($status_msg, array("class" => $status_class));
 
 	//---------------------------------------------------------
 	// Publish Status
 	//---------------------------------------------------------
 	$disp_pub_status = ($version_live) ? ('Yes') : ('No');
-	$pub_status_class = ($version_live) ? ('label label-success') : ('label');
+	$pub_status_class = ($version_live) ? ('label label-success') : ('label label-default');
 	$entry["publish_status"] = span($disp_pub_status, array('class' => $pub_status_class));
 
 	//---------------------------------------------------------
@@ -309,4 +323,3 @@ print div(ob_get_clean(), ['class' => 'table-responsive']);
 //==================================================================
 include("{$mod_common_dir}/content_versions/version_modal.html");
 
-?>

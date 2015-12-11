@@ -19,4 +19,3 @@ if (lwcms_db_table_field_exists('site_entries', 'published')) {
 	$sql_updates[19] = "ALTER TABLE `site_entries` DROP `published`";
 }
 
-?>

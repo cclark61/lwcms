@@ -12,6 +12,5 @@
 //***************************************************************************
 
 $mod_title = "Access Control (by user)";
-$mod_image = image("{$icon_base_dir}/table_key.png", "[&raquo;]", array("title" => "Site Access", "class" => "gen_icon"));
+$mod_icon_class = 'fa fa-lock';
 
-?>

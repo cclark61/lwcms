@@ -42,4 +42,3 @@ function update_asms($site_id)
 	}
 }
 
-?>

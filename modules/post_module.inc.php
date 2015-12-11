@@ -17,6 +17,11 @@
 //=========================================================================
 //=========================================================================
 
+//=============================================================
+// Include OpenCore Pre-Page Include File
+//=============================================================
+include(OPENCORE_PATH . '/modules/post_module.inc.php');
+
 //**************************************************************
 // Dates
 //**************************************************************
@@ -24,46 +29,14 @@ $this->add_xml('curr_year', date('Y'));
 $this->add_xml('curr_date', date('n/j/Y'));
 
 //**************************************************************
-// Version
-//**************************************************************
-$this->add_xml('version', xml_escape($_SESSION['version']));
-
-//**************************************************************
-// Theme
-//**************************************************************
-$this->add_xml("theme", $this->theme);
-$this->add_xml("theme_path", "{$this->html_path}/themes/{$this->theme}");
-
-//**************************************************************
 // Load Auxillary JavaScript if Necessary
 //**************************************************************
 include(__DIR__ . '/common/load-js.php');
 
 //**************************************************************
-// Module Title
-//**************************************************************
-if (empty($mod_title)) { $mod_title = "???"; }
-$this->add_xml("mod_title", xml_escape($mod_title));
-
-//**************************************************************
-// Back Link
-//**************************************************************
-if (!empty($back_link)) { $this->add_xml("back_link", xml_escape($back_link)); }
-
-//**************************************************************
-// Module Images / Icon Classes
-//**************************************************************
-if (!empty($mod_icon_class)) { $this->add_xml("mod_icon_class", xml_escape($mod_icon_class)); }
-
-//**************************************************************
-// Links
-//**************************************************************
-if (!empty($top_mod_links)) { $this->add_xml("top_mod_links", xml_escape_array($top_mod_links)); }
-
-//**************************************************************
 // Breadcrumbs
 //**************************************************************
-if (!empty($breadcrumbs)) { $this->add_xml("breadcrumbs", xml_escape_array($breadcrumbs)); }
+//if (!empty($breadcrumbs)) { $this->add_xml("breadcrumbs", xml_escape_array($breadcrumbs)); }
 
 //**************************************************************
 // Admin Status
@@ -78,63 +51,26 @@ if (!empty($_SESSION["site_header"])) { $this->add_xml("site_header", xml_escape
 if (!empty($_SESSION["site_footer"])) { $this->add_xml("site_footer", xml_escape($_SESSION["site_footer"])); }
 
 //**************************************************************
-// Layout Type
+// Sites Menu
 //**************************************************************
-if (!empty($layout_type)) { $this->add_xml("layout_type", xml_escape($layout_type)); }
+$sites_list = LWCMS::get_site_list();
+if (!empty($sites_list)) {
+	$site_menu = '';
+	foreach ($sites_list as $site) {
+		$link_attrs = [];
+		if ($site['id'] == SEGMENT_1) {
+			$link_attrs['class'] = 'active';
+		}
 
-//**************************************************************
-// Messages
-//**************************************************************
-$message_types = array(
-	'error_message',
-	'warn_message',
-	'action_message',
-	'gen_message',
-	'page_message',
-	'bottom_message',
-	'timer_message'
-);
-
-foreach ($message_types as $msg_type) {
-	if (!empty($$msg_type) || !empty($_SESSION[$msg_type])) {
-		$formatted_messages = false;
-		if (!empty($$msg_type) && !empty($_SESSION[$msg_type])) {
-			$formatted_messages = format_page_messages($$msg_type, $_SESSION[$msg_type]);
-			unset($_SESSION[$msg_type]);
-		}
-		else if (!empty($$msg_type)) {
-			$formatted_messages = format_page_messages($$msg_type);
-		}
-		else if (!empty($_SESSION[$msg_type])) {
-			$formatted_messages = format_page_messages($_SESSION[$msg_type]);
-			unset($_SESSION[$msg_type]);
-		}
-		if ($formatted_messages) {
-			$this->add_xml($msg_type, array2xml('messages', $formatted_messages));
-		}
+		$site_menu .= li(
+			anchor("/{$site['id']}/", css_icon('fa fa-globe') . ' ' . $site['site_name']), 
+			$link_attrs
+		);
 	}
+	$this->add_xml('site_menu', xml_escape($site_menu));
 }
 
 //**************************************************************
+// Site Modules Menu
 //**************************************************************
-// Format Page Messages function
-//**************************************************************
-//**************************************************************
-function format_page_messages()
-{
-	$messages = array();
-	$args = func_get_args();
-	foreach ($args as $arg) {
-		if (is_array($arg) && count($arg) > 0) {
-			foreach ($arg as $key => $arg_msg) {
-				$messages[] = xml_escape($arg_msg);
-			}
-		}
-		else if ((string)$arg != '') {
-			$messages[] = xml_escape($arg);
-		}
-	}
-
-	return $messages;
-}
 

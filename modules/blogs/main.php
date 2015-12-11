@@ -17,7 +17,12 @@
 $top_mod_links = array();
 if ($acc_lvl > 1) {
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
-	$top_mod_links["links"][] = array("link" => $tmp_link, "desc" => "Add a blog", "image" => xml_escape($add_image));
+	$top_mod_links["links"][] = array(
+		"link" => $tmp_link, 
+		"desc" => "Add a blog", 
+		"image" => xml_escape($add_image),
+		'class' => 'btn btn-success'
+	);
 }
 
 //==================================================================
@@ -67,7 +72,7 @@ foreach ($blogs as $key => &$blog) {
 	// Active Status
 	//----------------------------------------------
 	$status_msg = ($active) ? ("Yes") : ("No");
-	$status_class = ($active) ? ("label label-success") : ("label");
+	$status_class = ($active) ? ("label label-success") : ("label label-default");
 	$blog["active"] = span($status_msg, array("class" => $status_class));
 	
 	//----------------------------------------------

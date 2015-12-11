@@ -11,5 +11,6 @@
 **/
 //***************************************************************************
 
-print "Application Settings Comming Soon...";
+$mod_title = "Access Control (by site)";
+$mod_icon_class = 'fa fa-lock';
 

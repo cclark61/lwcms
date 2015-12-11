@@ -23,4 +23,3 @@ else {
 	$sql_updates[2] = "UPDATE `app_modules` SET `mod_desc` = 'Content (Static)' WHERE `app_modules`.`phrase` = 'static_content' LIMIT 1 ;";
 }
 
-?>

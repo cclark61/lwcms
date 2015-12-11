@@ -24,4 +24,3 @@ class site_blog_entry extends database_interface_object
 	}
 }
 
-?>

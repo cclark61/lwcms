@@ -19,13 +19,13 @@ include('local.var.php');
 //=================================================================
 // Build Module List
 //=================================================================
-$admin_modules = get_admin_modules($get_mods_args);
+$get_mods_args['base_dir'] = __DIR__;
+$admin_modules = LWCMS::get_modules($get_mods_args);
 
 //=================================================================
 // Flow Control
 //=================================================================
 if ($segment_2 == '') {
-	$mod_title = "Admin Control Panel";
 	include("main.php");
 }
 else {
@@ -33,10 +33,7 @@ else {
 		$mod_path = dirname(__FILE__) . "/{$segment_2}";
 		$breadcrumbs[] = anchor($mod_base_url2, "Admin");
 		$mod_base_url2 = $mod_base_url = "{$mod_base_url}{$segment_2}/";
-		include("{$mod_path}/mod_info.php");
 		include("{$mod_path}/controller.php");
 	}
 }
 
-
-?>

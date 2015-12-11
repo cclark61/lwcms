@@ -152,4 +152,3 @@ else {
     include("main.php");
 }
 
-?>

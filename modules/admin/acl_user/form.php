@@ -118,4 +118,3 @@ else {
 	add_gen_message('There are currently no sites available for to this user.');
 }
 
-?>

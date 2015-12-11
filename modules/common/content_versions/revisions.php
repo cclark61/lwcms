@@ -49,7 +49,7 @@ foreach ($recs as $key => &$rec) {
 	// Publish Status
 	//---------------------------------------------------------
 	$disp_pub_status = ($version_live == $rec['id']) ? ('Published') : ('Draft');
-	$pub_status_class = ($version_live == $rec['id']) ? ('label label-success') : ('label');
+	$pub_status_class = ($version_live == $rec['id']) ? ('label label-success') : ('label label-default');
 	$rec["publish_status"] = span($disp_pub_status, array('class' => $pub_status_class));
 }
 

@@ -69,12 +69,7 @@ $form->add_element(
 // Cache Dynamic Content?
 //==================================================================
 $form->add_element(
-	POP_TB::control_group(
-		POP_TB::checkbox_label(
-			new checkbox('cache_dynamic_content', "1", $cache_dynamic_content)
-			. " Cache Dynamic Content"
-		)
-	)
+	POP_TB::simple_control_group('Cache Dynamic Content', new checkbox('cache_dynamic_content', "1", $cache_dynamic_content))
 );
 
 //==================================================================
@@ -99,21 +94,19 @@ if ($action == "edit") {
 else { $active_modules = array(); }
 
 //----------------------------------------------
-// Create Checkboxes
+// Active Module Checkboxes
 //----------------------------------------------
 $str_mods = '';
 foreach ($app_modules as $smod) {
 	$checked = (isset($active_modules[$smod["id"]])) ? (1) : (0);
-	$str_mods .= POP_TB::checkbox_label(new checkbox("site_mod_" . $smod["id"], "1", $checked) . $smod['mod_desc']);
+	$form->add_element(
+		POP_TB::simple_control_group($smod['mod_desc'], new checkbox("site_mod_" . $smod["id"], "1", $checked))
+	);
+
 }
 
-//----------------------------------------------
-// Add Checkboxes
-//----------------------------------------------
-$form->add_element(
-	POP_TB::simple_control_group(false, $str_mods)
-);
-
+//==================================================================
+//==================================================================
 $form->end_fieldset();
 
 //==================================================================
@@ -126,4 +119,3 @@ $form->add_element(POP_TB::save_button());
 //==================================================================
 $form->render();
 
-?>

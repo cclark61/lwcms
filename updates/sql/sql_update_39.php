@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[39] = "UPDATE `app_modules` SET `mod_desc` = 'Static Content ' WHERE `app_modules`.`phrase` = 'static_content' LIMIT 1 ;";
 
-?>

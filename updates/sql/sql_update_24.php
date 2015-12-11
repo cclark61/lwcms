@@ -17,4 +17,3 @@
 //****************************************************************************
 $sql_updates[24] = "ALTER TABLE `site_entries` CHANGE `content` `content` MEDIUMTEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ";
 
-?>

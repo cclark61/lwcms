@@ -17,7 +17,7 @@
 $form = new form_too(BASE_URL . 'change_pass/');
 $this->clear_mod_var("form_key");
 $this->set_mod_var("form_key", $form->use_key());
-$form->attr('.', 'form-horizontal');
+$form->attr('.', 'form-horizontal wide-labels');
 
 //==================================================================
 // Hidden Variables
@@ -55,4 +55,3 @@ $form->add_element(POP_TB::save_button());
 //==================================================================
 $form->render();
 
-?>

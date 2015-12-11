@@ -39,14 +39,6 @@ $this->add_js_file('/bower_components/jQuery.MultiFile/jQuery.MultiFile.min.js?'
 $this->add_js_file('main.js?' . $_SESSION['version']);
 
 //**********************************************************
-// Message Arrays
-//**********************************************************
-$error_message = array();
-$warn_message = array();
-$action_message = array();
-$gen_message = array();
-
-//**********************************************************
 // Nav Arrays
 //**********************************************************
 $top_mod_links = array();
@@ -75,6 +67,7 @@ $add_folder_image = $add_image;
 $del_folder_image = $delete_image;
 $upload_file_image = css_icon('fa fa-upload');
 $image_image = css_icon('fa fa-image-o');
+$publish_image = css_icon('fa fa-upload');
 
 //**********************************************************
 // Module URLs
@@ -170,3 +163,4 @@ $mod_common_dir = __DIR__ . '/common';
 //**********************************************************
 define('SUPER_ADMIN', $_SESSION['super_admin']);
 define('ADMIN_STATUS', $admin_status);
+

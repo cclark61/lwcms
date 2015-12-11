@@ -46,4 +46,3 @@ else {
 	include("form.php");
 }
 
-?>

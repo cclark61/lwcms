@@ -49,4 +49,3 @@ else {
 	return false;
 }
 
-?>

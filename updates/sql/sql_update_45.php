@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('app_modules', 'version')) {
 	$sql_updates[45] = "ALTER TABLE `app_modules` ADD `version` VARCHAR( 7 ) NULL DEFAULT NULL ";
 }
 
-?>

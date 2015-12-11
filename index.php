@@ -48,4 +48,3 @@ else {
 	include("$_SESSION[frame_path]/main_controller.php");
 }
 
-?>

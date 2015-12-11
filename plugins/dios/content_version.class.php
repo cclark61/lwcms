@@ -23,4 +23,3 @@ class content_version extends database_interface_object
 	}
 }
 
-?>

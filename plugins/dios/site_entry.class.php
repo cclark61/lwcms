@@ -25,4 +25,3 @@ class site_entry extends database_interface_object
 	}
 }
 
-?>

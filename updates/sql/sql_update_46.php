@@ -27,4 +27,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'active')) {
 	$sql_updates[46][] = "ALTER TABLE `site_entries` ADD `active` TINYINT( 1 ) NOT NULL DEFAULT '1'";
 }
 
-?>

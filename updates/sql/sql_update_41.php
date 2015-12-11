@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[41] = "ALTER TABLE `users` ADD `super_admin` TINYINT( 1 ) NOT NULL DEFAULT '0' AFTER `admin`";
 
-?>

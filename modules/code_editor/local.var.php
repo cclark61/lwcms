@@ -11,7 +11,9 @@
 **/
 //***************************************************************************
 
-$mod_title = "Access Control (by site)";
-$mod_image = image("{$icon_base_dir}/table_key.png", "[&raquo;]", array("title" => "Site Access", "class" => "gen_icon"));
+//=========================================================================
+// Module Settings
+//=========================================================================
+$mod_title = 'Code Editor';
+$mod_icon_class = 'fa fa-code';
 
-?>

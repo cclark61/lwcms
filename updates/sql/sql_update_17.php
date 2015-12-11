@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'index_content')) {
 	$sql_updates[17] = "ALTER TABLE `site_entries` ADD `index_content` TINYINT NOT NULL DEFAULT '1'";
 }
 
-?>

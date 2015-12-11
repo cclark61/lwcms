@@ -19,4 +19,3 @@ if (lwcms_db_table_field_exists('site_entries', 'entry_stage')) {
 	$sql_updates[13] = "ALTER TABLE `site_entries` DROP `entry_stage`";
 }
 
-?>

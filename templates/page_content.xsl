@@ -16,7 +16,7 @@
 <xsl:template match="page_links_list">
 	<ul class="nav nav-tabs nav-stacked">
 		<xsl:if test="./class">
-			<xsl:attribute name="class"><xsl:value-of select="concat(./class, ' nav nav-tabs nav-stacked')"/></xsl:attribute>
+			<xsl:attribute name="class"><xsl:value-of select="concat(./class, ' sub-modules-nav nav nav-pills nav-stacked')"/></xsl:attribute>
 		</xsl:if>
 		<xsl:for-each select="./links/*">
 			<li>

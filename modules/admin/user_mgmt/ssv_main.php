@@ -49,4 +49,3 @@ $ssv->add_check("last_name", "is_not_empty", "You must enter a last name.");
 //==================================================================
 $ssv_status = $ssv->validate();
 
-?>

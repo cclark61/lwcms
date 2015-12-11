@@ -15,4 +15,3 @@ $ssv = new server_side_validation();
 $ssv->add_check("blog_title", "is_not_empty", "You must enter an blog title.");
 $ssv_status = $ssv->validate();
 
-?>

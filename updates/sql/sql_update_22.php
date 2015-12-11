@@ -23,4 +23,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'version_dev')) {
 	";
 }
 
-?>

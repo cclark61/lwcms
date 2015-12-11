@@ -64,17 +64,17 @@ foreach ($users as $key => &$user) {
 		$user["admin"] = span("Yes", array('class' => 'label label-success'));
 	}
 	else {
-		$user["admin"] = span("No", array('class' => 'label'));
+		$user["admin"] = span("No", array('class' => 'label label-default'));
 	}
 
 	//------------------------------------------
 	// Active?
 	//------------------------------------------
 	if (isset($disabled) && $disabled == 1) {
-		$user["disabled"] = span("No", array('class' => 'label label-important'));
+		$user["disabled"] = span("No", array('class' => 'label label-default'));
 	}
 	else {
-		$user["disabled"] = span("Yes", array('class' => 'label label-success'));
+		$user["disabled"] = span("Yes", array('class' => 'label label-danger'));
 	}
 
 	//**************************************************************************

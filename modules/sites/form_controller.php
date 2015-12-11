@@ -78,4 +78,3 @@ else {
     include("main.php");
 }
 
-?>

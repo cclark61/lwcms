@@ -19,15 +19,15 @@ if ($acc_lvl > 1) {
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "add"), true);
 	$top_mod_links["links"][] = array(
 		"link" => $tmp_link, 
-		"desc" => $file_image, 
-		"image" => xml_escape($add_image) . '&nbsp;',
+		"desc" => xml_escape($file_image), 
+		"image" => xml_escape($add_image . '&nbsp;'),
 		"class" => 'btn btn-success fa-no-right-space'
 	);
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "add_dir"), true);
 	$top_mod_links["links"][] = array(
 		"link" => $tmp_link, 
-		"desc" => $folder_image, 
-		"image" => xml_escape($add_image) . '&nbsp;',
+		"desc" => xml_escape($folder_image), 
+		"image" => xml_escape($add_image . '&nbsp;'),
 		"class" => 'btn btn-success fa-no-right-space'
 	);
 	$tmp_link = add_url_params($mod_base_url2, array("action" => "upload_file"), true);

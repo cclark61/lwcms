@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'cat_id')) {
 	$sql_updates[30] = "ALTER TABLE `site_entries` ADD `cat_id` SMALLINT NOT NULL DEFAULT '0' AFTER `post_date`";
 }
 
-?>

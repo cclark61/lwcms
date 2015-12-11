@@ -19,4 +19,3 @@ if (lwcms_db_table_exists('site_seo_entries')) {
 	$sql_updates[10] = "DROP TABLE `site_seo_entries`;";
 }
 
-?>

@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[7] = "DELETE FROM app_modules WHERE phrase = 'seo' LIMIT 1;";
 
-?>

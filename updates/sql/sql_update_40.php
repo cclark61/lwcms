@@ -17,4 +17,3 @@
 //**************************************************************************** 
 $sql_updates[40] = "UPDATE `app_modules` SET `mod_desc` = 'Publishable Content ' WHERE `app_modules`.`phrase` = 'dynamic_content' LIMIT 1 ;";
 
-?>

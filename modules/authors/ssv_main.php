@@ -15,4 +15,3 @@ $ssv = new server_side_validation();
 $ssv->add_check("author_name", "is_not_empty", "You must enter an author name.");
 $ssv_status = $ssv->validate();
 
-?>

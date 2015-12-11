@@ -71,4 +71,3 @@ else {
     include("main.php");
 }
 
-?>

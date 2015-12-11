@@ -19,4 +19,3 @@ if (!lwcms_db_table_field_exists('site_entries', 'post_date')) {
 	$sql_updates[25] = "ALTER TABLE `site_entries` ADD `post_date` TIMESTAMP NULL AFTER `mod_date` ";
 }
 
-?>

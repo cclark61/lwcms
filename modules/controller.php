@@ -55,7 +55,7 @@ switch ($segment_1) {
 		$mod_title = 'Change My Password';
 		$mod_base_url .= 'change_pass/';
 		$mod_base_url2 .= 'change_pass/';
-		$mod_icon_class = 'icon-lock';
+		$mod_icon_class = 'fa fa-asterisk';
 		include("home/change_pass/main.php");
         break;
 

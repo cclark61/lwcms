@@ -16,4 +16,3 @@ $ssv->add_check("site_name", "is_not_empty", "You must enter a site name.");
 //$ssv->add_check("content_dir", "is_not_empty", "You must enter a site content directory.");
 $ssv_status = $ssv->validate();
 
-?>

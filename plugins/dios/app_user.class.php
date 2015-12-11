@@ -24,4 +24,3 @@ class app_user extends database_interface_object
 	}
 }
 
-?>

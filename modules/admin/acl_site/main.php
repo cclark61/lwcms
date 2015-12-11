@@ -49,4 +49,3 @@ else {
 	add_gen_message('There are currently no sites to configure.');
 }
 
-?>

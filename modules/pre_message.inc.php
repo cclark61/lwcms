@@ -17,6 +17,11 @@
 //=========================================================================
 //=========================================================================
 
+//=============================================================
+// Include OpenCore Pre-Page Include File
+//=============================================================
+include(OPENCORE_PATH . '/modules/pre_message.inc.php');
+
 //**************************************************************
 // Site Message Title / Header / Footer
 //**************************************************************
@@ -24,19 +29,6 @@ if (!empty($_SESSION['site_title'])) { $this->add_xml('site_title', xml_escape($
 if (!empty($_SESSION['msg_header'])) { $this->add_xml('msg_header', xml_escape($_SESSION['msg_header'])); }
 if (!empty($_SESSION['msg_logo_url'])) { $this->add_xml('msg_logo_url', xml_escape($_SESSION['msg_logo_url'])); }
 if (!empty($_SESSION['msg_footer'])) { $this->add_xml('msg_footer', xml_escape($_SESSION['msg_footer'])); }
-
-//**************************************************************
-// Version
-//**************************************************************
-$_SESSION['version'] = file_get_contents('VERSION');
-$this->add_xml('version', xml_escape($_SESSION['version']));
-
-//**************************************************************
-// Theme
-//**************************************************************
-if (empty($this->theme)) { $this->theme = 'default'; }
-$this->add_xml("theme", $this->theme);
-$this->add_xml("theme_path", "{$this->html_path}/themes/{$this->theme}");
 
 //**************************************************************
 // Timezone

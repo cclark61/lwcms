@@ -19,4 +19,3 @@ if (lwcms_db_table_exists('site_navs')) {
 	$sql_updates[32] = "DROP TABLE site_navs";
 }
 
-?>

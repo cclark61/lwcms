@@ -367,4 +367,3 @@ function get_content_versions($type, $entry_id, $user=false)
 	return qdb_exec('', $strsql, $params);
 }
 
-?>

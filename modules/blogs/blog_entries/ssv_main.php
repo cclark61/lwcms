@@ -25,4 +25,3 @@ if ($action == "update") {
 
 $ssv_status = $ssv->validate();
 
-?>

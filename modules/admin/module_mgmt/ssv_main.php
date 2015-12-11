@@ -22,4 +22,3 @@ else {
 
 $ssv_status = $ssv->validate();
 
-?>

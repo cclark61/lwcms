@@ -21,7 +21,7 @@ foreach ($admin_modules as $am_key => $am) {
 	$menu_links["links"][] = array(
 		"link" => "{$mod_base_url}{$am_key}/", 
 		"desc" => $am['mod_title'], 
-		"image" => xml_escape($am['mod_image'])
+		"image" => xml_escape(css_icon($am['mod_icon_class']))
 	);
 }
 
@@ -32,4 +32,3 @@ $xml = array2xml("page_links_list", $menu_links);
 $xsl = $this->file_path . "/templates/page_content.xsl";
 xml_transform($xml, $xsl);
 
-?>

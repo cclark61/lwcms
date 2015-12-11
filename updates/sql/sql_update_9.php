@@ -19,4 +19,3 @@ if (lwcms_db_table_exists('site_module_options')) {
 	$sql_updates[9] = "DROP TABLE `site_module_options`;";
 }
 
-?>

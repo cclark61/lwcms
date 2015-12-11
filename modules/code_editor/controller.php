@@ -14,5 +14,6 @@
 $base_dir = $document_root;
 $base_display = 'DOCUMENT_ROOT';
 $root_folder_name = 'document root';
-include(__DIR__ . '/../common/editor/controller.php');
+include('local.var.php');
+include(APP_COMMON_DIR . '/editor/controller.php');
 

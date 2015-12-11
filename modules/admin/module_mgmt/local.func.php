@@ -185,4 +185,3 @@ function check_module_package()
 	 return false;
 }
 
-?>

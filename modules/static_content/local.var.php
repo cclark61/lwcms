@@ -11,8 +11,9 @@
 **/
 //***************************************************************************
 
-if ($_SESSION["userid"] == "admin" || SUPER_ADMIN) {
-	$mod_title = "Set Administrative Users";
-	$mod_image = image("{$icon_base_dir}/key.png", "[&raquo;]", array("title" => "Set Administrators", "class" => "gen_icon"));
-}
+//=========================================================================
+// Module Settings
+//=========================================================================
+$mod_title = 'Static Content';
+$mod_icon_class = 'fa fa-file-text-o';
 

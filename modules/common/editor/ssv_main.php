@@ -67,4 +67,3 @@ if ($this->action == "save_upload") {
 
 $ssv_status = $ssv->validate();
 
-?>
