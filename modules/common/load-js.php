@@ -50,6 +50,7 @@ if (!empty($codemirror_mode)) {
 			break;
 
 		case 'js':
+		case 'json':
 			$use_code_mirror = true;
 			$cm_js_files = array(
 				'/bower_components/codemirror/mode/clike/clike.js',

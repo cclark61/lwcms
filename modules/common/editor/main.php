@@ -79,6 +79,7 @@ foreach($dir_files as $key => $df) {
 			case "css":
 			case "js":
 			case "javascript":
+			case "json":
 				$editable = true;
 				$tmp_image = css_icon('fa fa-code');
 				break;
@@ -91,7 +92,7 @@ foreach($dir_files as $key => $df) {
 			case "psd":
 			case "bmp":
 				$editable = false;
-				$image_image;
+				$editable = $image_image;
 				break;
 
 			case '':
@@ -109,7 +110,8 @@ foreach($dir_files as $key => $df) {
 				break;
 
 		}
-		
+
+		if (!$editable) { $tmp_image .= '&nbsp;'; }
 		$tmp_item["name"] = $tmp_image . $df;
 		if ($editable && is_writeable($tmp_path)) {
 			$edit_link = add_url_params($mod_base_url, array("action" => "edit", "file" => $encoded_name));
