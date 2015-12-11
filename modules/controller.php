@@ -12,6 +12,16 @@
 //***************************************************************************
 
 //====================================================================
+// Remove TinyMCE Settings
+//====================================================================
+if (isset($_SESSION['moxiemanager.filesystem.local.wwwroot'])) {
+	unset($_SESSION['moxiemanager.filesystem.local.wwwroot']);
+}
+if (isset($_SESSION['moxiemanager.filesystem.rootpath'])) {
+	unset($_SESSION['moxiemanager.filesystem.rootpath']);
+}
+
+//====================================================================
 // Validate Site ID if Given
 //====================================================================
 $site_id = false;
@@ -21,7 +31,11 @@ if (is_numeric($segment_1) && $site_params = init_site_params($segment_1)) {
 	$site_id = $valid_site;
 	define('SITE_ID', $site_id);
 	$document_root = trim($document_root);
+	$_SESSION['moxiemanager.filesystem.local.wwwroot'] = $document_root;
 	$content_dir = trim($content_dir);
+	if ($content_dir) {
+		$_SESSION['moxiemanager.filesystem.rootpath'] = $content_dir;		
+	}
 	if ($document_root != '') { $document_root = realpath($document_root); }
 	if ($content_dir != '') { $content_dir = realpath($content_dir); }
 }
