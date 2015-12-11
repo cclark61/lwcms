@@ -40,7 +40,12 @@ session_start();
 // Load the configuration if necessary
 //*************************************************************************
 if (!isset($_SESSION["frame_path"])) {
-	include("config.inc.php");
+	$config_file = __DIR__ . '/config.inc.php';
+	if (!file_exists($config_file)) {
+		include('install.html');
+		exit;
+	}
+	include($config_file);
 	$_SESSION["file_path"] = dirname(__FILE__);
 	include("$config_arr[frame_path]/main_controller.php");
 }
