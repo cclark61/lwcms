@@ -19,58 +19,6 @@
 
 //*****************************************************************************
 //*****************************************************************************
-// Initialize Site Parameters Function
-//*****************************************************************************
-//*****************************************************************************
-function init_site_params($site_id)
-{
-	$site_params = array();
-	$db_params = array('i', $site_id);
-	$strsql = 'select * from sites where id = ?';
-	$site_recs = qdb_exec('', $strsql, $db_params);
-	if (count($site_recs) > 0) {
-		foreach ($site_recs[0] as $key => $value) { 
-			if ($key != "id") { $site_params[$key] = $value; }
-		}
-		$site_params['node_path'] = '';
-		$site_params['parent'] = 0;
-		$site_params['valid_site'] = $site_id;
-	}
-	else {
-		add_warn_message('Invalid Site!');
-		return false;
-	}
-	
-	return $site_params;
-}
-
-//*****************************************************************************
-//*****************************************************************************
-// Initialize Blog Parameters Function
-//*****************************************************************************
-//*****************************************************************************
-function init_blog_params($site_id, $blog_id)
-{
-	$blog_params = array();
-	$db_params = array('ii', $blog_id, $site_id);
-	$strsql = 'select * from site_blogs where id = ? and site_id = ?';
-	$blog_recs = qdb_exec('', $strsql, $db_params);
-	if (count($blog_recs) > 0) {
-		$blog_params['valid_blog'] = $blog_id;
-		$blog_params['blog_id'] = $blog_id;
-		$blog_params['blog_url'] = $blog_recs[0]['blog_url'];
-		$blog_params['blog_title'] = $blog_recs[0]['blog_title'];
-	}
-	else {
-		$blog_params['warn_message'] = 'Invalid Blog!';
-		$blog_params['valid_blog'] = false;
-	}
-	
-	return $blog_params;
-}
-
-//*****************************************************************************
-//*****************************************************************************
 // Parse Timestamp Function
 //*****************************************************************************
 //*****************************************************************************
@@ -293,31 +241,6 @@ function get_non_admin_user_list($index='userid:full_name')
 			full_name, userid
 	";
 	return qdb_list('', $strsql, $index); // Ok
-}
-
-//*****************************************************************************
-//*****************************************************************************
-// Load Module Plugin
-//*****************************************************************************
-//*****************************************************************************
-function load_module_plugin($plugin)
-{
-	$module = $GLOBALS['phrase'];
-	$plugin_path = "{$_SESSION['file_path']}/modules/{$module}/assets/plugins";
-
-	if (file_exists("{$plugin_path}/{$plugin}.class.php")) {
-		include_once("{$plugin_path}/{$plugin}.class.php");
-		return true;
-	}
-	else if (file_exists("{$plugin_path}/{$plugin}.inc.php")) {
-		include_once("{$plugin_path}/{$plugin}.inc.php");
-		return true;
-	}
-	else {
-		display_error(__FUNCTION__, "Plugin \"{$plugin}\" could not be found.");
-	}
-
-	return false;
 }
 
 //*****************************************************************************

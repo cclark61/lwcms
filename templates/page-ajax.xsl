@@ -12,7 +12,7 @@
 <xsl:output method="text" />
 
 <xsl:template match="page">
-    <xsl:value-of select="//page/application_data/ajax_data" disable-output-escaping="yes" />
+    <xsl:value-of select="/page/application_data/ajax_data" disable-output-escaping="yes" />
 </xsl:template>
 
 </xsl:stylesheet>

@@ -13,8 +13,8 @@
 
 <xsl:template match="page">
 	<xsl:choose>
-		<xsl:when test="//page/content/content_data != ''"> 
-		    <xsl:value-of select="//page/content/content_data" disable-output-escaping="yes" />
+		<xsl:when test="/page/content/content_data != ''"> 
+		    <xsl:value-of select="/page/content/content_data" disable-output-escaping="yes" />
 		</xsl:when>
 		<xsl:otherwise>0</xsl:otherwise>
 	</xsl:choose>

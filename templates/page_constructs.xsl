@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!DOCTYPE xsl:stylesheet [ 
+<!DOCTYPE xsl:stylesheet [
    <!ENTITY nbsp "&#160;" >
    <!ENTITY bull "&#149;" >
    <!ENTITY copy "&#169;" >
    <!ENTITY amp "&#38;" >
    <!ENTITY mdash "&#8212;" >
 ]>
-   
+
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:output method="html" encoding="utf-8" indent="yes" />
@@ -20,8 +20,8 @@
 <xsl:template name="title">
 	<title>
 		<xsl:choose>
-			<xsl:when test="//page/application_data/site_title != ''">
-				<xsl:value-of select="//page/application_data/site_title" disable-output-escaping="yes" />
+			<xsl:when test="/page/application_data/site_title != ''">
+				<xsl:value-of select="/page/application_data/site_title" disable-output-escaping="yes" />
 			</xsl:when>
 			<xsl:otherwise>
 				LWCMS
@@ -53,7 +53,7 @@
 	<!--=============================================-->
 	<!-- Add-in CSS Files -->
 	<!--=============================================-->
-	<xsl:for-each select="//page/css_files/css_file">
+	<xsl:for-each select="/page/css_files/css_file">
 	  <link>
 		  <xsl:for-each select="*">
 			  <xsl:variable name="tagname" select="name(.)" />
@@ -79,7 +79,7 @@
 	<!--=============================================-->
 	<!-- Add-in JavaScript Files -->
 	<!--=============================================-->
-	<xsl:for-each select="//page/js_files/js_file">
+	<xsl:for-each select="/page/js_files/js_file">
 		<script type="text/javascript">
 			<xsl:attribute name="src">
 				<xsl:choose>
@@ -87,7 +87,7 @@
 						<xsl:value-of select="." disable-output-escaping="yes"  />
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="concat(//page/html_path, '/javascript/', .)" disable-output-escaping="yes"  />
+						<xsl:value-of select="concat(/page/html_path, '/javascript/', .)" disable-output-escaping="yes"  />
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:attribute>
@@ -145,9 +145,9 @@
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:choose>
-					<xsl:when test="//page/application_data/site_header != ''">
+					<xsl:when test="/page/application_data/site_header != ''">
 						<span>
-							<xsl:value-of select="//page/application_data/site_header" disable-output-escaping="yes" />
+							<xsl:value-of select="/page/application_data/site_header" disable-output-escaping="yes" />
 						</span>
 						<!--
 						<xsl:value-of select="/page/application_data/header_title" disable-output-escaping="yes" />
@@ -240,9 +240,9 @@
 					</a>
 					<ul aria-labelledby="user_nav" role="menu" class="dropdown-menu dropdown-menu-right">
 						<xsl:value-of select="/page/application_data/user_menu" disable-output-escaping="yes" />
-						<xsl:if test="//page/application_data/lwcms_admin_status > 0">
+						<xsl:if test="/page/application_data/lwcms_admin_status > 0">
 							<li>
-								<xsl:if test="//page/application_data/segment_1 = 'admin'">
+								<xsl:if test="/page/application_data/segment_1 = 'admin'">
 						    		<xsl:attribute name="class">active</xsl:attribute>
 					    		</xsl:if>
 								<a href="/admin/" tabindex="-1"><i class="fa fa-gears"></i>Administration</a>
@@ -251,7 +251,7 @@
 						<li>
 							<a tabindex="-1">
 								<xsl:attribute name="href">
-									<xsl:value-of select="concat(//page/application_data/base_url, 'change_pass/')" />
+									<xsl:value-of select="concat(/page/application_data/base_url, 'change_pass/')" />
 								</xsl:attribute>
 								<i class="fa fa-asterisk"></i>Change Password
 							</a>
@@ -316,10 +316,10 @@
 <xsl:template name="msg_page_header">
 	<div id="logo_wrapper">
 		<xsl:choose>
-			<xsl:when test="//page/application_data/msg_logo_url != ''">
+			<xsl:when test="/page/application_data/msg_logo_url != ''">
 				<img>
 					<xsl:attribute name="src">
-						<xsl:value-of select="//page/application_data/msg_logo_url" disable-output-escaping="yes" />
+						<xsl:value-of select="/page/application_data/msg_logo_url" disable-output-escaping="yes" />
 					</xsl:attribute>			
 				</img>
 			</xsl:when>
@@ -328,9 +328,9 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</div>
-	<xsl:if test="//page/application_data/msg_header != ''">
+	<xsl:if test="/page/application_data/msg_header != ''">
 		<h2 id="header" class="center">
-			<xsl:value-of select="//page/application_data/msg_header" disable-output-escaping="yes" />
+			<xsl:value-of select="/page/application_data/msg_header" disable-output-escaping="yes" />
 		</h2>
 	</xsl:if>
 </xsl:template>
@@ -344,8 +344,8 @@
 	<div id="footer_wrapper">
 		<div id="footer">
 			<p class="credit muted">
-				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
-				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
+				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="/page/application_data/version" disable-output-escaping="yes" />
+				&mdash; &copy; <xsl:value-of select="/page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
 			</p>
 		</div>
 	</div>
@@ -360,8 +360,8 @@
 	<div id="footer">
 		<div class="container">
 			<p class="credit muted">
-				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="//page/application_data/version" disable-output-escaping="yes" />
-				&mdash; &copy; <xsl:value-of select="//page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
+				<a href="http://www.emonlade.net/lwcms/" target="_blank">lwcms</a> v<xsl:value-of select="/page/application_data/version" disable-output-escaping="yes" />
+				&mdash; &copy; <xsl:value-of select="/page/application_data/curr_year" disable-output-escaping="yes" />&nbsp;<a href="http://www.emonlade.net" target="_blank">Christian J. Clark</a>
 			</p>
 		</div>
 	</div>

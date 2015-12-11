@@ -21,7 +21,7 @@ include('local.var.php');
 //====================================================================
 $blog_params = false;
 $valid_blog = false;
-if (!empty($segment_3) && is_numeric($segment_3) && $blog_params = init_blog_params($site_id, $segment_3)) {
+if (!empty($segment_3) && is_numeric($segment_3) && $blog_params = Blogs::init_blog_params($site_id, $segment_3)) {
 	extract($blog_params);
 	$valid_blog = $segment_3;
 	$blog_id = $segment_3;

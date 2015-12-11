@@ -18,11 +18,11 @@ body {
 	padding-bottom: 60px;
 }
 
-#footer {
+.lwcms.page #footer {
 	padding-left: 20px;
 }
 
-#footer .credit {
+.lwcms.page #footer .credit {
 	margin: 0 0 20px 20px;
 }
 
@@ -31,7 +31,6 @@ body {
 /***********************************************************************/
 .lwcms.page #header {
 	border-bottom: 3px #96B0DF solid;
-	height: 50px;
 }
 
 .lwcms.page #header.navbar .nav {
@@ -100,6 +99,9 @@ body {
 /***********************************************************/
 @media (max-width: 767px) {
 
+	.lwcms.page #header .navbar-brand {
+	    padding-top: 6px;
+	}
 
 }
 

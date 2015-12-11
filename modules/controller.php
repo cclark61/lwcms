@@ -26,7 +26,7 @@ if (isset($_SESSION['moxiemanager.filesystem.rootpath'])) {
 //====================================================================
 $site_id = false;
 $valid_site = false;
-if (is_numeric($segment_1) && $site_params = init_site_params($segment_1)) {
+if (is_numeric($segment_1) && $site_params = Sites::init_site_params($segment_1)) {
 	extract($site_params);
 	$site_id = $valid_site;
 	define('SITE_ID', $site_id);

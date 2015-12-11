@@ -19,6 +19,33 @@ class Sites
 
 	//***********************************************************************
 	//***********************************************************************
+	// Initialize Site Parameters Function
+	//***********************************************************************
+	//***********************************************************************
+	public static function init_site_params($site_id)
+	{
+		$site_params = array();
+		$db_params = array('i', $site_id);
+		$strsql = 'select * from sites where id = ?';
+		$site_recs = qdb_exec('', $strsql, $db_params);
+		if (count($site_recs) > 0) {
+			foreach ($site_recs[0] as $key => $value) { 
+				if ($key != "id") { $site_params[$key] = $value; }
+			}
+			$site_params['node_path'] = '';
+			$site_params['parent'] = 0;
+			$site_params['valid_site'] = $site_id;
+		}
+		else {
+			add_warn_message('Invalid Site!');
+			return false;
+		}
+		
+		return $site_params;
+	}
+
+	//***********************************************************************
+	//***********************************************************************
 	// Update Active Site Modules Function
 	//***********************************************************************
 	//***********************************************************************
