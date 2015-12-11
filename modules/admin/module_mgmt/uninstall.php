@@ -49,7 +49,7 @@ if ($module) {
 	//********************************************************
 	// Uninstall Module Files
 	//********************************************************
-	$num_errors += rrmdir("{$this->file_path}/modules/{$phrase}");
+	$num_errors += ModuleMgmt::rrmdir("{$this->file_path}/modules/{$phrase}");
 
 	//********************************************************
 	// Errors? Return False.
