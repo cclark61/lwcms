@@ -210,7 +210,8 @@ foreach ($entries as $key => &$entry) {
 	// Actions
 	//---------------------------------------------------------
 	$entry["actions"] = anchor($revisions_link, $revisions_image, array('class' => 'btn btn-primary'));
-	$entry["actions"] .= xhe('a', $view_image, $tmp_attrs);
+	$entry["actions"] .= anchor('#', $view_image, $tmp_attrs);
+	$entry["actions"] .= anchor($edit_link, $edit_image, array('class' => 'btn btn-info'));
 	if ($acc_lvl > 1) {
 		$entry["actions"] .= anchor($delete_link, $delete_image, array('class' => 'btn btn-danger'));
 	}

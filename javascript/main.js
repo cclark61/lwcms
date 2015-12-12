@@ -30,7 +30,7 @@ $(document).ready(function()
 	//**************************************************************************
 	//**************************************************************************
 	$('.view_version').click('show', function () {
-	    $("#revision_modal .modal-body iframe").attr('src', $(this).attr('content_link'))
+	    $("#revision_modal .modal-body iframe").attr('src', $(this).attr('content_link'));
 	});
 
 });
