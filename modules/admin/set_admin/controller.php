@@ -48,6 +48,7 @@ if ($user_list) {
 	// Create Form
 	//=================================================================
 	$form = new form_too($mod_base_url2);
+	$form->attr('class', "form-horizontal wide-labels");
 	$form->label("Select Administrators");
 	
 	$form->add_hidden("action", "update");
@@ -57,12 +58,12 @@ if ($user_list) {
 	foreach ($user_list as $user) {
 		$user_name = html_escape($user["first_name"] . " " . $user["last_name"]);
 		$chk_user = new checkbox($user["userid"], 1, $user["admin"]);
-		$str_users .= POP_TB::checkbox_label("{$chk_user} {$user_name}");
+		//$str_users .= POP_TB::checkbox_label("{$chk_user} {$user_name}");
+
+		$form->add_element(
+			POP_TB::simple_control_group($user_name, $chk_user)
+		);
 	}
-	
-	$form->add_element(
-		POP_TB::simple_control_group(false, $str_users)
-	);
 
 	$form->add_element(POP_TB::save_button('Update'));
 

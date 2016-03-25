@@ -19,6 +19,7 @@ $form->start_fieldset('Content');
 //==================================================================
 // Content
 //==================================================================
+$content = preg_replace('/[\x00-\x1F\x7F]/', '', $content);
 $ta_content = new textarea("content", strip_cdata_tags($content), 70, 30);
 $ta_content->attr('.', 'mceEditor');
 $form->add_element(
@@ -30,3 +31,6 @@ $form->add_element(
 //==================================================================
 $form->end_fieldset();
 
+//print $content;$this->skip_render();exit;
+//$form->no_xsl();
+//$this->set_output_xml();

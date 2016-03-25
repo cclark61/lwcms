@@ -18,7 +18,7 @@ $form = new form_too($mod_base_url2);
 $this->clear_mod_var("form_key");
 $this->set_mod_var("form_key", $form->use_key());
 $form->label($form_label);
-$form->attr('.', 'form-horizontal');
+$form->attr('.', 'form-horizontal wide-labels');
 
 $form->add_hidden("action", $next_action[$action]);
 $form->add_hidden("admin", $admin);
@@ -64,9 +64,7 @@ $form->add_element(
 if ($curr_userid != $_SESSION["userid"] && $admin != 1) {
     if (!isset($disabled)) { $disabled = 0; }
 	$form->add_element(
-		POP_TB::simple_control_group(false, 
-			POP_TB::checkbox_label(new checkbox("disabled", 1, $disabled) . " Account Disabled")
-		)
+		POP_TB::simple_control_group('Account Disabled', new checkbox("disabled", 1, $disabled))
 	);
 }
 
