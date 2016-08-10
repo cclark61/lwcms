@@ -164,3 +164,36 @@ $mod_common_dir = __DIR__ . '/common';
 define('SUPER_ADMIN', $_SESSION['super_admin']);
 define('ADMIN_STATUS', $admin_status);
 
+//**********************************************************
+// Folder Option Fields
+//**********************************************************
+global $folder_opt_fields;
+$folder_opt_fields = array(
+	'entry_desc' => 'Description',
+	'url_tag' => 'URL Tag/Key',
+	'metadata' => 'Custom Data',
+	'entry_author' => 'Author',
+	'category' => 'Category',
+	'post_date' => 'Post Date',
+	'active' => 'Active',
+	'content' => 'Content Area'
+);
+
+//**********************************************************
+// Folder Option Boolean Fields
+//**********************************************************
+global $folder_opt_settings;
+$folder_opt_settings = array(
+	'use_wysiwyg' => [
+		'type' => 'bool',
+		'title' => 'Use WYSIWYG Editor',
+		'default' => 1
+	]
+	/*
+	'test' => [
+		'type' => 'text',
+		'title' => 'Test!!',
+		'default' => ''
+	]
+	*/
+);

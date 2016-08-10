@@ -14,17 +14,14 @@
 //==================================================================
 // Extract JSON Data from Meta Data Field
 //==================================================================
-if ($entry_type == 2 || $action == 'add_entry') {
-	$strsql = 'select metadata from site_entries where id = ?';
-	$json_folder_opts = qdb_lookup('', $strsql, 'metadata', array('i', $parent));
-	$FOLDER_OPTS = (array)json_decode($json_folder_opts);
-	if (!is_array($FOLDER_OPTS)) { $FOLDER_OPTS = array(); }
+$se_id = ($entry_type == 2 || $action == 'add_entry') ? ($parent) : ($id);
+$FOLDER_OPTS = SiteEntries::GetMetadata($se_id);
 
-	foreach ($folder_opt_fields as $field => $desc) {
-		if (!isset($FOLDER_OPTS[$field])) {
-			$FOLDER_OPTS[$field] = 'show';
-		}
-	}
+//==================================================================
+// WYSIWYG?
+//==================================================================
+if (($action == 'add_entry' || $entry_type == 2) && $FOLDER_OPTS['use_wysiwyg']) {
+	$load_tinymce = true;
 }
 
 //==================================================================
@@ -34,7 +31,7 @@ $form = new form_too($mod_base_url2);
 $this->clear_mod_var("form_key");
 $this->set_mod_var("form_key", $form->use_key());
 $form->label($form_label);
-$form->attr('.', 'form-horizontal');
+$form->attr('.', 'form-horizontal wide-labels');
 
 //==================================================================
 // Hidden Variables

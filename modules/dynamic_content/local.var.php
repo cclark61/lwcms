@@ -37,18 +37,9 @@ $folder_opt_values = array(
 	'admin' => 'Admin Only',
 	'hide' => 'Hide'
 );
-
-//=========================================================================
-// Folder Option Fields
-//=========================================================================
-$folder_opt_fields = array(
-	'entry_desc' => 'Description',
-	'url_tag' => 'URL Tag/Key',
-	'metadata' => 'Custom Data',
-	'entry_author' => 'Author',
-	'category' => 'Category',
-	'post_date' => 'Post Date',
-	'active' => 'Active',
-	'content' => 'Content Area'
+$folder_opt_bool_values = array(
+	'1' => 'Yes',
+	'0' => 'No'
 );
+
 

@@ -76,15 +76,11 @@ if (isset($next_action[$action])) {
 
     	case "add_entry":
     		$form_label = "Add an Entry";
-			$load_tinymce = true;
     		include("frm_main.php");
     		break;
 
 		case "edit":
 			$form_label = ($action == 'add_folder' || $entry_type == 1) ? ("Edit a Folder") : ("Edit an Entry");
-			if ($entry_type == 2) {
-				$load_tinymce = true;
-			}
 			include("frm_main.php");
 			break;
 
