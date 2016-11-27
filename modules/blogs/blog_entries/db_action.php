@@ -28,6 +28,16 @@ else { include("ssv_main.php"); }
 if ($do_trans && $ssv_status) {
 
 	//---------------------------------------------------
+	// Meta Tags
+	//---------------------------------------------------
+	if (!empty($metadata)) {
+		foreach ($metadata as $md_key => $md_val) {
+			if ($md_val == '') { unset($metadata[$md_key]); }
+		}
+		$_POST['metadata'] = json_encode($metadata);
+	}
+
+	//---------------------------------------------------
 	// Create new object
 	//---------------------------------------------------
 	if (!isset($id)) { $id = ""; }

@@ -15,11 +15,13 @@
 // Extract JSON Data from Meta Data Field
 //==================================================================
 $se_id = ($entry_type == 2 || $action == 'add_entry') ? ($parent) : ($id);
-$FOLDER_OPTS = SiteEntries::GetMetadata($se_id);
+$FOLDER_OPTS = SiteEntries::GetFolderOptions($se_id);
+//var_dump($FOLDER_OPTS);
 
 //==================================================================
 // WYSIWYG?
 //==================================================================
+if (!isset($FOLDER_OPTS['use_wysiwyg'])) { $FOLDER_OPTS['use_wysiwyg'] = 1; }
 if (($action == 'add_entry' || $entry_type == 2) && $FOLDER_OPTS['use_wysiwyg']) {
 	$load_tinymce = true;
 }
@@ -109,15 +111,6 @@ else {
 //==================================================================
 //==================================================================
 if ($action == 'add_entry' || ($action == 'edit' && $entry_type == 2)) {
-
-	//******************************************************
-	// Custom Data
-	//******************************************************
-	if ($FOLDER_OPTS['metadata'] == 'show' || ($FOLDER_OPTS['metadata'] == 'admin' && $acc_lvl > 2)) {
-		$form->add_element(
-			POP_TB::simple_control_group("Custom Data", new textarea("metadata", $metadata, 60, 5))
-		);
-	}
 
 	//******************************************************
 	// Author
@@ -253,6 +246,41 @@ if ($action == 'add_entry' || ($action == 'edit' && $entry_type == 2)) {
 if ($action == 'add_folder' || $entry_type == 1) {
 	if ($acc_lvl > 2) {
 		include('frm_folder_opts.php');
+	}
+}
+
+//==================================================================
+// Meta Tags
+//==================================================================
+if ($action == 'add_entry' || ($action == 'edit' && $entry_type == 2)) {
+	if ($FOLDER_OPTS['metadata'] == 'show' || ($FOLDER_OPTS['metadata'] == 'admin' && $acc_lvl > 2)) {
+
+		//------------------------------------------------------------------
+		// Convert Meta Data from JSON to Array
+		//------------------------------------------------------------------
+		if (!empty($metadata)) {
+			$metadata = json_decode($metadata, true);
+		}
+
+		//------------------------------------------------------------------
+		// Start Fieldset
+		//------------------------------------------------------------------
+		$form->start_fieldset('Meta Tags');
+
+		//------------------------------------------------------------------
+		// Display Meta Tags
+		//------------------------------------------------------------------
+		foreach ($meta_tags as $mt_key => $mt_desc) {
+			$tmp_val = (isset($metadata[$mt_key])) ? ($metadata[$mt_key]) : ('');
+			$form->add_element(
+				POP_TB::simple_control_group($mt_desc, new textarea("metadata[{$mt_key}]", $tmp_val, 50, 3))
+			);
+		}
+
+		//------------------------------------------------------------------
+		// End Fieldset
+		//------------------------------------------------------------------
+		$form->end_fieldset();
 	}
 }
 

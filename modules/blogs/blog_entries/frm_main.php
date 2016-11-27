@@ -20,7 +20,7 @@ $form = new form_too($mod_base_url2);
 $this->clear_mod_var("form_key");
 $this->set_mod_var("form_key", $form->use_key());
 $form->label($form_label);
-$form->attr('.', 'form-horizontal');
+$form->attr('.', 'form-horizontal wide-labels');
 
 //==================================================================
 // Hidden Variables
@@ -154,22 +154,45 @@ $form->add_element(
 );
 
 //==================================================================
-// Start Content Fieldset
-//==================================================================
-$form->start_fieldset('Content');
-
-//==================================================================
 // Content
 //==================================================================
+$form->start_fieldset('Content');
 $ta_content = new textarea("entry_content", strip_cdata_tags($entry_content), 70, 30);
 $ta_content->attr('.', 'mceEditor');
 $form->add_element(
 	POP_TB::simple_control_group(false, $ta_content)
 );
+$form->end_fieldset();
 
 //==================================================================
-// End Content Fieldset
+// Meta Tags
 //==================================================================
+
+//------------------------------------------------------------------
+// Convert Meta Data from JSON to Array
+//------------------------------------------------------------------
+if (!empty($metadata)) {
+	$metadata = json_decode($metadata, true);
+}
+
+//------------------------------------------------------------------
+// Start Fieldset
+//------------------------------------------------------------------
+$form->start_fieldset('Meta Tags');
+
+//------------------------------------------------------------------
+// Display Meta Tags
+//------------------------------------------------------------------
+foreach ($meta_tags as $mt_key => $mt_desc) {
+	$tmp_val = (isset($metadata[$mt_key])) ? ($metadata[$mt_key]) : ('');
+	$form->add_element(
+		POP_TB::simple_control_group($mt_desc, new textarea("metadata[{$mt_key}]", $tmp_val, 50, 3))
+	);
+}
+
+//------------------------------------------------------------------
+// End Fieldset
+//------------------------------------------------------------------
 $form->end_fieldset();
 
 //==================================================================

@@ -42,6 +42,16 @@ else {
 if ($do_trans && $ssv_status) {
 
 	//---------------------------------------------------
+	// Meta Tags
+	//---------------------------------------------------
+	if (!empty($metadata)) {
+		foreach ($metadata as $md_key => $md_val) {
+			if ($md_val == '') { unset($metadata[$md_key]); }
+		}
+		$_POST['metadata'] = json_encode($metadata);
+	}
+
+	//---------------------------------------------------
 	// Create new object
 	//---------------------------------------------------
 	if (!isset($id)) { $id = ""; }
@@ -185,21 +195,7 @@ if ($do_trans && $ssv_status) {
         //==========================================================
         //==========================================================
         case 'update_folder_opts':
-        	if ($id == 0) {
-	        	$strsql = 'select count(*) as count from site_entries where site_id = ? and id = 0';
-	        	$count = qdb_lookup('', $strsql, 'count', array('i', SITE_ID));
-	        	if (!$count) {
-	        		qdb_list('', 'SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"');
-		        	$strsql = "
-		        		insert into site_entries (id, site_id, create_user, entry_title)
-		        		values (?, ?, ?, 'Top Level')
-		        	";
-		        	qdb_exec('', $strsql, array('iis', $id, SITE_ID, $_SESSION['userid']));
-	        	}
-        	}
-        	$json_folder_opts = json_encode($FOLDER_OPTS);
-		    $strsql = 'update site_entries set metadata = ? where site_id = ? and id = ?';
-		    qdb_exec('', $strsql, array('sii', $json_folder_opts, SITE_ID, $id));
+        	SiteEntries::SaveFolderOptions($id, SITE_ID, $FOLDER_OPTS);
 		    add_action_message("The folder options have been successfully saved.");
         	break;
 

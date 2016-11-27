@@ -111,7 +111,6 @@ if (isset($change_row)) { $table->set_row_attr($change_row, "class", "hl_change"
 $table->identify("", "events_list table table-striped");
 $table->set_col_attr('blog_url', 'class', 'hidden-xs', false, true);
 $table->set_col_attr('active', 'class', 'hidden-xs', false, true);
-$table->render();
 
 ob_start();
 $table->render();

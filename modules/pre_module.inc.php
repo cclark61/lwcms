@@ -171,7 +171,7 @@ global $folder_opt_fields;
 $folder_opt_fields = array(
 	'entry_desc' => 'Description',
 	'url_tag' => 'URL Tag/Key',
-	'metadata' => 'Custom Data',
+	'metadata' => 'Meta Tags',
 	'entry_author' => 'Author',
 	'category' => 'Category',
 	'post_date' => 'Post Date',
@@ -197,3 +197,20 @@ $folder_opt_settings = array(
 	]
 	*/
 );
+
+//**********************************************************
+// Meta Tags
+//**********************************************************
+global $meta_tags;
+$meta_tags = [
+	'keywords' => 'Keywords',
+	'description' => 'Description',
+	'author' => 'Author',
+	'og:title' => 'Open Graph Title',
+	'og:type' => 'Open Graph Type',
+	'og:url' => 'Open Graph URL',
+	'og:image' => 'Open Graph Image',
+	'og:description' => 'Open Graph Description',
+	'og:site_name' => 'Open Graph Sitename',
+	'fb:admins' => 'Facebook Admins'
+];
